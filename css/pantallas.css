@@ -1,0 +1,69 @@
+/* ==========================================================
+   pantallas.css — estilos propios de cada pantalla
+   Una sección por pantalla, en el mismo orden del prototipo.
+   ========================================================== */
+
+/* Cada pantalla ocupa todo el marco y aparece con un suave desvanecido */
+.pantalla {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  animation: entrar 0.3s ease;
+}
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- 1. Splash ---------- */
+.splash {
+  background: var(--morado);
+  color: var(--blanco);
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-3);
+  cursor: pointer;
+}
+
+.splash .logo {
+  font-size: 2.4rem;
+}
+
+.splash__frase {
+  color: var(--lima);
+  font-weight: 600;
+}
+
+/* ---------- 2. Bienvenida (elegir cómo entrar) ---------- */
+.bienvenida {
+  padding: var(--espacio-5) var(--espacio-4);
+  gap: var(--espacio-4);
+  justify-content: flex-end;
+  background: var(--negro);
+  color: var(--blanco);
+}
+
+.bienvenida__titulo {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.bienvenida__titulo span {
+  color: var(--lima);
+}
+
+.bienvenida__opciones {
+  display: grid; /* Grid: una opción debajo de otra */
+  gap: var(--espacio-3);
+}
+
+/* ---------- Pantalla pendiente (mientras se programan las demás) ---------- */
+.pendiente {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--espacio-4);
+  gap: var(--espacio-3);
+}

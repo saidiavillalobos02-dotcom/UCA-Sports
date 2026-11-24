@@ -1,0 +1,135 @@
+/* ==========================================================
+   base.css — colores, tipografía y reglas generales
+   Si algo cambia en la marca, se cambia aquí una sola vez.
+   ========================================================== */
+
+/* 1. Variables de la marca */
+:root {
+  /* Colores principales (confirmados) */
+  --morado: #5f31c5;
+  --lima: #c7f04a;
+  --negro: #101114;
+  --blanco: #ffffff;
+
+  /* Lila y grises: valores provisionales, se ajustan con los de Figma */
+  --lila: #e9e1fb;
+  --gris-100: #f4f4f6;
+  --gris-300: #d9d9df;
+  --gris-500: #8a8a94;
+  --gris-700: #44444c;
+
+  /* Tipografía */
+  --fuente: "Host Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Espacios y formas */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 16px;
+  --espacio-4: 24px;
+  --espacio-5: 32px;
+  --radio: 16px;
+  --radio-grande: 28px;
+
+  /* Medidas del marco de celular */
+  --ancho-telefono: 390px;
+  --alto-telefono: 844px;
+}
+
+/* 2. Reinicio básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fuente);
+  color: var(--negro);
+  background: var(--gris-100);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+a {
+  color: inherit;
+}
+
+/* 3. Foco visible (accesibilidad con teclado) */
+:focus-visible {
+  outline: 3px solid var(--lima);
+  outline-offset: 2px;
+}
+
+/* 4. Respetar a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 5. Marco de celular (Flexbox para centrar) */
+.marco-telefono {
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--blanco);
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* En pantallas grandes: se muestra como un celular en el centro */
+@media (min-width: 600px) {
+  body {
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-4);
+    background: var(--negro);
+  }
+
+  .marco-telefono {
+    width: var(--ancho-telefono);
+    height: min(var(--alto-telefono), calc(100dvh - 48px));
+    min-height: 0;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 0 0 10px #000, 0 30px 80px rgba(95, 49, 197, 0.45);
+  }
+}

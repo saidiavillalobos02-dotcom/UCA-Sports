@@ -1,0 +1,92 @@
+/* ==========================================================
+   componentes.css — piezas que se repiten en varias pantallas
+   (botones, tarjetas, etiquetas, barra inferior, etc.)
+   Aquí se irá armando el UI Kit en código.
+   ========================================================== */
+
+/* 1. Botones */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  min-height: 52px; /* tamaño cómodo para tocar con el dedo */
+  padding: 0 var(--espacio-4);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.boton:active {
+  transform: scale(0.97);
+}
+
+.boton--lima {
+  background: var(--lima);
+  color: var(--negro);
+}
+
+.boton--morado {
+  background: var(--morado);
+  color: var(--blanco);
+}
+
+.boton--borde {
+  border: 2px solid currentColor;
+}
+
+.boton--ancho {
+  width: 100%;
+}
+
+/* 2. Tarjeta */
+.tarjeta {
+  background: var(--blanco);
+  border: 1px solid var(--gris-300);
+  border-radius: var(--radio);
+  padding: var(--espacio-3);
+}
+
+/* 3. Etiqueta pequeña */
+.etiqueta {
+  display: inline-block;
+  padding: var(--espacio-1) var(--espacio-3);
+  border-radius: 999px;
+  background: var(--lila);
+  color: var(--morado);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* 4. Espacio reservado para las fotos (28 fotos pendientes) */
+.foto-pendiente {
+  display: grid;
+  place-items: center;
+  background: var(--lila);
+  color: var(--morado);
+  border-radius: var(--radio);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  aspect-ratio: 16 / 10;
+}
+
+/* 5. Logo provisional (se reemplaza por el SVG real de Figma) */
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-style: italic; /* recuerda la U inclinada del logo "Impulso" */
+}
+
+.logo__punto {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--lima);
+  align-self: center;
+}
