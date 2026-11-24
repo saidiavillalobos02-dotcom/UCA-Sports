@@ -1,15 +1,15 @@
 /* ==========================================================
    app.js — el "motor" del prototipo
-   Se encarga de mostrar la pantalla correcta según la dirección
-   (#/splash, #/bienvenida, ...) y de los botones "ir a" y "atrás".
+   Muestra la pantalla correcta según la dirección (#/splash,
+   #/bienvenida, ...) y se encarga de los botones "ir a" y "atrás".
    ========================================================== */
 
 const UCA = {
-  pantallas: {},        // todas las pantallas registradas
-  historial: [],        // por dónde ha pasado la persona (para el botón "atrás")
+  pantallas: {},   // todas las pantallas registradas
+  pasos: 0,        // cuántas pantallas lleva la persona dentro de la app
   actual: null,
 
-  /* Registra una pantalla nueva. Se usa desde pantallas.js */
+  /* Registra una pantalla nueva. Se usa desde los archivos pantallas-*.js */
   registrar(id, pantalla) {
     this.pantallas[id] = pantalla;
   },
@@ -19,10 +19,12 @@ const UCA = {
     const contenedor = document.getElementById("app");
     const pantalla = this.pantallas[id] || this.pantallas["pendiente"];
 
-    // Limpiar lo anterior y dibujar la pantalla nueva
     contenedor.innerHTML = pantalla.dibujar(id);
     contenedor.scrollTop = 0;
     this.actual = id;
+
+    // Da vida a los campos, el código, la cuenta regresiva...
+    UI.activar(contenedor);
 
     // Cada pantalla puede tener su propio comportamiento (opcional)
     if (typeof pantalla.alMostrar === "function") {
@@ -30,16 +32,20 @@ const UCA = {
     }
   },
 
-  /* Cambia de pantalla (actualiza la dirección y el historial) */
+  /* Cambia de pantalla */
   ir(id) {
-    if (this.actual) this.historial.push(this.actual);
+    this.pasos += 1;
     window.location.hash = "/" + id;
   },
 
-  /* Vuelve a la pantalla anterior */
+  /* Vuelve a la pantalla anterior (o a la bienvenida si no hay anterior) */
   atras() {
-    const anterior = this.historial.pop();
-    window.location.hash = "/" + (anterior || "bienvenida");
+    if (this.pasos > 0) {
+      this.pasos -= 1;
+      window.history.back();
+    } else {
+      window.location.hash = "/bienvenida";
+    }
   },
 
   /* Lee la dirección y muestra la pantalla que corresponde */
@@ -61,6 +67,15 @@ const UCA = {
       if (evento.target.closest("[data-atras]")) {
         evento.preventDefault();
         this.atras();
+      }
+    });
+
+    // Los formularios (data-envio) pasan a la pantalla siguiente al enviarse
+    document.addEventListener("submit", (evento) => {
+      const formulario = evento.target.closest("[data-envio]");
+      if (formulario) {
+        evento.preventDefault();
+        this.ir(formulario.dataset.envio);
       }
     });
 

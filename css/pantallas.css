@@ -1,14 +1,26 @@
 /* ==========================================================
    pantallas.css — estilos propios de cada pantalla
-   Una sección por pantalla, en el mismo orden del prototipo.
+   Una sección por pantalla, en el mismo orden que Figma.
+   Lo que se repite está en componentes.css.
    ========================================================== */
 
-/* Cada pantalla ocupa todo el marco y aparece con un suave desvanecido */
+/* ---------- Base de todas las pantallas ---------- */
 .pantalla {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 32px var(--margen) 36px;
   animation: entrar 0.3s ease;
+}
+
+.pantalla--clara {
+  background: var(--gris-claro);
+  color: var(--grafito);
+}
+
+.pantalla--oscura {
+  background: var(--carbon);
+  color: var(--gris-claro);
 }
 
 @keyframes entrar {
@@ -16,54 +28,431 @@
   to   { opacity: 1; transform: none; }
 }
 
-/* ---------- 1. Splash ---------- */
+/* Bloques de texto que se repiten en casi todas */
+.titulo {
+  font-size: var(--texto-h1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.subtitulo {
+  margin-top: 20px;
+  font-size: var(--texto-h5);
+  line-height: 1.35;
+  color: var(--gris-oscuro);
+}
+
+.parrafo {
+  font-size: var(--texto-p);
+  line-height: 1.45;
+}
+
+/* Espacio ordenado entre bloques */
+.pila {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pila--amplia {
+  gap: 28px;
+}
+
+/* Separaciones sueltas entre bloques */
+.sep-s { margin-top: 16px; }
+.sep-m { margin-top: 24px; }
+.sep-l { margin-top: 32px; }
+
+/* Lo que va pegado abajo en las pantallas oscuras */
+.al-fondo {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.centrado {
+  text-align: center;
+}
+
+/* ---------- 00 · Splash ---------- */
 .splash {
-  background: var(--morado);
-  color: var(--blanco);
   align-items: center;
   justify-content: center;
-  gap: var(--espacio-3);
+  gap: 20px;
+  padding-bottom: 120px;
+  background: linear-gradient(to bottom, var(--carbon) 33%, var(--morado));
+  color: var(--blanco);
   cursor: pointer;
 }
 
-.splash .logo {
-  font-size: 2.4rem;
+.splash__simbolo {
+  width: 140px;
+  height: 140px;
 }
 
-.splash__frase {
-  color: var(--lima);
-  font-weight: 600;
+.splash__marca {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 40px;
+  letter-spacing: -0.4px;
 }
 
-/* ---------- 2. Bienvenida (elegir cómo entrar) ---------- */
-.bienvenida {
-  padding: var(--espacio-5) var(--espacio-4);
-  gap: var(--espacio-4);
-  justify-content: flex-end;
-  background: var(--negro);
-  color: var(--blanco);
-}
-
-.bienvenida__titulo {
-  font-size: 2rem;
-  line-height: 1.1;
+.splash__uca {
   font-weight: 800;
 }
 
-.bienvenida__titulo span {
+.splash__sports {
+  font-weight: 500;
   color: var(--lima);
 }
 
-.bienvenida__opciones {
-  display: grid; /* Grid: una opción debajo de otra */
-  gap: var(--espacio-3);
+/* ---------- 01 · Bienvenida ---------- */
+.bienvenida__foto {
+  aspect-ratio: 346 / 231;
+  margin-top: 22px;
 }
 
-/* ---------- Pantalla pendiente (mientras se programan las demás) ---------- */
+.bienvenida__lema {
+  margin-top: 24px;
+}
+
+.bienvenida__titulo {
+  margin-top: 28px;
+}
+
+.bienvenida__texto {
+  margin-top: 28px;
+}
+
+.bienvenida__acciones {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+.bienvenida__admin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  font-size: var(--texto-h6);
+  font-weight: 500;
+  color: var(--gris-medio);
+}
+
+/* ---------- 02, 02a, 02b · Iniciar sesión ---------- */
+.bajo-volver {
+  margin-top: 16px;
+}
+
+.acceso__formulario {
+  margin-top: 32px;
+}
+
+.acceso__olvido {
+  align-self: flex-end;
+  font-size: var(--texto-h6);
+}
+
+.acceso__registro {
+  display: flex;
+  gap: 8px;
+  color: var(--gris-oscuro);
+}
+
+.acceso__registro--centrado {
+  justify-content: center;
+}
+
+.acceso__perfiles {
+  display: flex;
+  gap: 9px;
+}
+
+.acceso__sobre {
+  margin-bottom: 8px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--gris-oscuro);
+  text-transform: uppercase;
+}
+
+.acceso__otros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: var(--texto-pequeno);
+  font-weight: 500;
+  color: var(--gris-texto);
+}
+
+.acceso__otros a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+}
+
+/* Aviso de la pantalla de administración */
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-grande);
+  font-size: var(--texto-pequeno);
+  line-height: 1.35;
+  color: var(--gris-texto);
+}
+
+.aviso .icono {
+  color: var(--morado);
+}
+
+/* ---------- 06 · Elegir perfil ---------- */
+.perfil {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 168px;
+  padding: 18px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio-grande);
+  background: var(--grafito);
+  color: var(--gris-claro);
+  text-align: left;
+}
+
+.perfil__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--lima);
+}
+
+.perfil__titulo {
+  margin-top: 12px;
+  max-width: 220px;
+  font-size: var(--texto-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.perfil__texto {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: var(--texto-pequeno);
+}
+
+.perfil__marca {
+  position: absolute;
+  top: 14px;
+  right: 22px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--gris-medio);
+  border-radius: var(--radio-total);
+  color: transparent;
+}
+
+/* Perfil elegido: fondo morado, borde lima y visto */
+.perfil--elegido {
+  border: 2px solid var(--lima);
+  background: var(--morado);
+}
+
+.perfil--elegido .perfil__sobre {
+  color: var(--gris-claro);
+}
+
+.perfil--elegido .perfil__marca {
+  border: 0;
+  background: var(--lima);
+  color: var(--grafito);
+}
+
+/* ---------- 07 · Cuenta institucional ---------- */
+.correo-uca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 3px 3px 3px 10px;
+  min-height: 32px;
+  border-radius: var(--radio-chico);
+  background: var(--grafito);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.correo-uca .icono {
+  color: var(--lima);
+}
+
+.correo-uca .etiqueta {
+  margin-left: auto;
+}
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.beneficio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 118px;
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.beneficio .icono {
+  color: var(--lima);
+}
+
+/* ---------- 08 y 09 · Crear cuenta ---------- */
+.aviso-externo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.aviso-externo__sobre {
+  color: var(--lima);
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.aviso-externo__texto {
+  font-size: var(--texto-pequeno);
+  line-height: 1.4;
+}
+
+/* ---------- 10 y 13 · Código de verificación ---------- */
+.encabezado-codigo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 176px;
+}
+
+.encabezado-codigo .circulo {
+  margin-bottom: 14px;
+}
+
+.reenviar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+.reenviar__boton {
+  color: var(--morado);
+  font-weight: 600;
+}
+
+/* ---------- 11 y 15 · Pantallas de éxito ---------- */
+.exito__icono {
+  margin-top: 44px;
+}
+
+.exito__etiqueta {
+  margin-top: 24px;
+}
+
+.exito__titulo {
+  margin-top: 16px;
+}
+
+.exito__texto {
+  margin-top: 20px;
+}
+
+.pasos {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 20px;
+  border-radius: var(--radio-grande);
+  background: var(--grafito);
+}
+
+.pasos__sobre {
+  color: var(--lima);
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.paso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.paso__numero {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radio-total);
+  background: var(--lima);
+  color: var(--grafito);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.paso__titulo {
+  font-weight: 600;
+}
+
+.paso__detalle {
+  font-size: var(--texto-pequeno);
+  line-height: 1.4;
+  color: var(--gris-medio);
+}
+
+/* ---------- Pantalla en construcción ---------- */
 .pendiente {
   align-items: center;
   justify-content: center;
+  gap: 16px;
   text-align: center;
-  padding: var(--espacio-4);
-  gap: var(--espacio-3);
+}
+
+.pendiente__accion {
+  width: 100%;
+}
+
+.pendiente .titulo {
+  font-size: var(--texto-h2);
+}
+
+/* Separación entre un título de sección y lo que sigue */
+.titulo-seccion + .beneficios {
+  margin-top: 14px;
 }

@@ -1,38 +1,53 @@
 /* ==========================================================
    base.css — colores, tipografía y reglas generales
+   Los valores salen de las variables de Figma (UI Kit).
    Si algo cambia en la marca, se cambia aquí una sola vez.
    ========================================================== */
 
 /* 1. Variables de la marca */
 :root {
-  /* Colores principales (confirmados) */
+  /* Colores principales */
   --morado: #5f31c5;
   --lima: #c7f04a;
-  --negro: #101114;
+  --carbon: #101114;
   --blanco: #ffffff;
 
-  /* Lila y grises: valores provisionales, se ajustan con los de Figma */
-  --lila: #e9e1fb;
-  --gris-100: #f4f4f6;
-  --gris-300: #d9d9df;
-  --gris-500: #8a8a94;
-  --gris-700: #44444c;
+  /* Grises (los mismos nombres de Figma: neutral 200, 400, 800, 1000) */
+  --gris-claro: #e8e8e8;
+  --gris-medio: #bbbbbb;
+  --gris-oscuro: #606060;
+  --grafito: #333333;
+  --gris-borde: #777777;
+  --gris-texto: #4a4a4a;
+
+  /* Lila: valor provisional hasta confirmarlo en Figma */
+  --lila: #e8e1f7;
 
   /* Tipografía */
   --fuente: "Host Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --texto-mini: 10px;
+  --texto-pequeno: 12px;
+  --texto-h6: 13px;
+  --texto-p: 14px;
+  --texto-h5: 15px;
+  --texto-h4: 17px;
+  --texto-h3: 20px;
+  --texto-h2: 24px;
+  --texto-h1: 28px;
 
-  /* Espacios y formas */
-  --espacio-1: 4px;
-  --espacio-2: 8px;
-  --espacio-3: 16px;
-  --espacio-4: 24px;
-  --espacio-5: 32px;
-  --radio: 16px;
-  --radio-grande: 28px;
+  /* Formas */
+  --radio-chico: 6px;
+  --radio-medio: 10px;
+  --radio: 12px;
+  --radio-grande: 16px;
+  --radio-total: 999px;
 
-  /* Medidas del marco de celular */
-  --ancho-telefono: 390px;
-  --alto-telefono: 844px;
+  /* Espacios */
+  --margen: 24px;
+
+  /* Medidas del marco de celular (iguales a las pantallas de Figma) */
+  --ancho-telefono: 393px;
+  --alto-telefono: 852px;
 }
 
 /* 2. Reinicio básico */
@@ -50,9 +65,10 @@ html {
 
 body {
   font-family: var(--fuente);
-  color: var(--negro);
-  background: var(--gris-100);
-  line-height: 1.4;
+  font-size: var(--texto-p);
+  color: var(--grafito);
+  background: var(--carbon);
+  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -78,11 +94,12 @@ button {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 /* 3. Foco visible (accesibilidad con teclado) */
 :focus-visible {
-  outline: 3px solid var(--lima);
+  outline: 3px solid var(--morado);
   outline-offset: 2px;
 }
 
@@ -96,11 +113,10 @@ a {
   }
 }
 
-/* 5. Marco de celular (Flexbox para centrar) */
+/* 5. Marco de celular */
 .marco-telefono {
   width: 100%;
   min-height: 100dvh;
-  background: var(--blanco);
   display: flex;
   flex-direction: column;
 }
@@ -109,19 +125,22 @@ a {
   flex: 1;
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
-/* En pantallas grandes: se muestra como un celular en el centro */
+.app::-webkit-scrollbar {
+  display: none;
+}
+
+/* En pantallas grandes se muestra como un celular en el centro */
 @media (min-width: 600px) {
   body {
     min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--espacio-4);
-    background: var(--negro);
+    padding: 24px;
   }
 
   .marco-telefono {

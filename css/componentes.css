@@ -1,92 +1,414 @@
 /* ==========================================================
    componentes.css — piezas que se repiten en varias pantallas
-   (botones, tarjetas, etiquetas, barra inferior, etc.)
-   Aquí se irá armando el UI Kit en código.
+   Es el UI Kit en código: marca, botones, campos, tarjetas...
    ========================================================== */
 
-/* 1. Botones */
+/* 1. Marca UCA SPORTS (texto) */
+.marca {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.marca__uca {
+  font-size: var(--texto-h1);
+  line-height: 1.2;
+}
+
+.marca__sports {
+  font-size: var(--texto-h3);
+  line-height: 1.25;
+}
+
+.marca__lema {
+  margin-top: 4px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* 2. Botón "volver" (flecha) */
+.volver {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 12px 0 0 -10px;
+  color: inherit;
+}
+
+/* 3. Botones */
 .boton {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--espacio-2);
+  width: 100%;
   min-height: 52px; /* tamaño cómodo para tocar con el dedo */
-  padding: 0 var(--espacio-4);
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  padding: 0 var(--margen);
+  border-radius: var(--radio);
+  background: var(--lima);
+  color: var(--grafito);
+  font-size: var(--texto-h4);
+  font-weight: 600;
+  line-height: 1.3;
+  transition: transform 0.15s ease;
 }
 
 .boton:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
-.boton--lima {
-  background: var(--lima);
-  color: var(--negro);
+/* Botón pequeño (elegir perfil al registrarse) */
+.boton-mini {
+  flex: 1;
+  min-height: 44px;
+  border-radius: var(--radio-medio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+  font-size: var(--texto-h6);
+  font-weight: 600;
 }
 
-.boton--morado {
+.boton-mini--morado {
   background: var(--morado);
+}
+
+/* 4. Enlaces de texto */
+.enlace {
+  display: inline-block;
+  color: var(--morado);
+  font-weight: 600;
+  font-size: var(--texto-p);
+}
+
+.enlace--chico {
+  font-size: var(--texto-h6);
+}
+
+.enlace--claro {
+  color: var(--gris-claro);
+}
+
+/* 5. Etiqueta lima (ej. "ELIGE TU PERFIL") */
+.etiqueta {
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: var(--radio-chico);
+  background: var(--lima);
+  color: var(--grafito);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* 6. Campo de texto */
+.campo__etiqueta {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.campo__caja {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  padding: 0 15px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+  background: var(--gris-claro);
+}
+
+.campo__caja:focus-within {
+  border-color: var(--morado);
+  box-shadow: 0 0 0 1px var(--morado);
+}
+
+.campo__entrada {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--grafito);
+  outline: none;
+}
+
+.campo__entrada::placeholder {
+  color: var(--gris-oscuro);
+  opacity: 1;
+}
+
+.campo__ojo {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: -8px;
+  color: var(--gris-oscuro);
+}
+
+/* 7. Casillas del código de 6 dígitos */
+.otp {
+  display: flex;
+  gap: 11px;
+}
+
+.otp__casilla {
+  width: 48px;
+  height: 56px;
+  min-width: 0;
+  border: 1px solid var(--gris-medio);
+  border-radius: var(--radio);
+  background: var(--blanco);
+  color: var(--grafito);
+  font-size: var(--texto-h3);
+  font-weight: 600;
+  text-align: center;
+}
+
+.otp__casilla:focus {
+  border: 2px solid var(--morado);
+  outline: none;
+}
+
+/* 8. Tarjetas */
+.tarjeta {
+  padding: 20px;
+  border-radius: var(--radio-grande);
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+.tarjeta--grafito {
+  background: var(--grafito);
+}
+
+.tarjeta__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.tarjeta__titulo {
+  font-size: var(--texto-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tarjeta__texto {
+  font-size: var(--texto-pequeno);
+  line-height: 1.4;
+}
+
+/* Tarjeta con círculo de ícono a la izquierda y texto a la derecha */
+.tarjeta--fila {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tarjeta--fila .tarjeta__cuerpo {
+  font-size: var(--texto-p);
+  font-weight: 600;
+}
+
+/* 9. Círculo con ícono */
+.circulo {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radio-total);
+  background: var(--lima);
+  color: var(--grafito);
+}
+
+.circulo--grande {
+  width: 72px;
+  height: 72px;
+}
+
+.circulo--chico {
+  width: 30px;
+  height: 30px;
+}
+
+/* 10. Barra de progreso (pasos del registro) */
+.progreso__texto {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--gris-oscuro);
+  text-transform: uppercase;
+}
+
+.progreso__barra {
+  height: 6px;
+  margin-top: 6px;
+  border-radius: var(--radio-total);
+  background: var(--gris-medio);
+}
+
+.progreso__avance {
+  height: 100%;
+  width: var(--avance, 0%);
+  border-radius: var(--radio-total);
+  background: var(--morado);
+}
+
+/* 11. Lista de requisitos de contraseña */
+.requisitos {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.requisitos__titulo {
+  color: var(--lima);
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.requisitos__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--texto-pequeno);
+  line-height: 1.4;
+}
+
+/* El visto aparece en lima cuando se cumple, y se apaga si no */
+.requisitos__item .icono {
+  color: var(--lima);
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+
+.requisitos__item--cumple .icono {
+  opacity: 1;
+}
+
+/* 12. Medidor de seguridad (4 barritas) */
+.seguridad__texto {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  text-transform: uppercase;
+}
+
+.seguridad__niveles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.seguridad__nivel {
+  height: 6px;
+  border-radius: var(--radio-total);
+  background: var(--gris-medio);
+  transition: background-color 0.2s ease;
+}
+
+.seguridad__nivel--activo {
+  background: var(--morado);
+}
+
+/* 13. Casilla de aceptar normas */
+.aceptar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--texto-pequeno);
+  line-height: 1.4;
+  color: var(--gris-oscuro);
+  cursor: pointer;
+}
+
+.aceptar__caja {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--gris-oscuro);
+  border-radius: var(--radio-chico);
   color: var(--blanco);
 }
 
-.boton--borde {
-  border: 2px solid currentColor;
+.aceptar__caja .icono {
+  opacity: 0;
 }
 
-.boton--ancho {
-  width: 100%;
+.aceptar__entrada {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* 2. Tarjeta */
-.tarjeta {
-  background: var(--blanco);
-  border: 1px solid var(--gris-300);
-  border-radius: var(--radio);
-  padding: var(--espacio-3);
+.aceptar__entrada:checked + .aceptar__caja {
+  border-color: var(--morado);
+  background: var(--morado);
 }
 
-/* 3. Etiqueta pequeña */
-.etiqueta {
-  display: inline-block;
-  padding: var(--espacio-1) var(--espacio-3);
-  border-radius: 999px;
-  background: var(--lila);
-  color: var(--morado);
-  font-size: 0.8rem;
-  font-weight: 700;
+.aceptar__entrada:checked + .aceptar__caja .icono {
+  opacity: 1;
 }
 
-/* 4. Espacio reservado para las fotos (28 fotos pendientes) */
-.foto-pendiente {
+.aceptar__entrada:focus-visible + .aceptar__caja {
+  outline: 3px solid var(--morado);
+  outline-offset: 2px;
+}
+
+/* 14. Foto con espacio reservado (las fotos reales se agregan en img/) */
+.foto {
+  position: relative;
   display: grid;
   place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
   background: var(--lila);
   color: var(--morado);
-  border-radius: var(--radio);
-  font-size: 0.8rem;
+  font-size: var(--texto-pequeno);
   font-weight: 600;
-  text-align: center;
-  aspect-ratio: 16 / 10;
 }
 
-/* 5. Logo provisional (se reemplaza por el SVG real de Figma) */
-.logo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  font-style: italic; /* recuerda la U inclinada del logo "Impulso" */
+.foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.logo__punto {
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 50%;
-  background: var(--lima);
-  align-self: center;
+/* 15. Ícono en línea */
+.icono {
+  flex: none;
+}
+
+/* 16. Título de sección (ej. "Código de 6 dígitos") */
+.titulo-seccion {
+  font-size: var(--texto-h4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* 17. Detalles de tarjeta */
+.tarjeta__cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.tarjeta--grafito .tarjeta__sobre {
+  color: var(--lima);
 }
