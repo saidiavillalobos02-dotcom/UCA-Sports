@@ -421,7 +421,8 @@
 }
 
 /* 18. Pantallas con sesión iniciada: barra superior + contenido + navegación */
-.pantalla--app {
+/* ".pantalla.pantalla--app" para ganarle al margen general de .pantalla */
+.pantalla.pantalla--app {
   padding: 0;
   min-height: 0; /* solo se desplaza el contenido de en medio */
   background: var(--blanco);
@@ -459,6 +460,11 @@
   flex-direction: column;
   gap: 28px;
   scrollbar-width: none;
+}
+
+/* Cada bloque conserva su alto; si no cabe, se desplaza (no se aplasta) */
+.app-contenido > * {
+  flex-shrink: 0;
 }
 
 .app-contenido::-webkit-scrollbar {
