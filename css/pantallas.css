@@ -456,3 +456,588 @@
 .titulo-seccion + .beneficios {
   margin-top: 14px;
 }
+
+/* ---------- 03 · Inicio (estudiante) ---------- */
+.inicio__saludo {
+  font-size: var(--texto-h1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.inicio__subtexto {
+  margin-top: 6px;
+  color: var(--gris-oscuro);
+}
+
+.destacada {
+  position: relative;
+  padding: 16px;
+  border-radius: var(--radio-grande);
+  background: var(--carbon);
+  color: var(--gris-claro);
+  overflow: hidden;
+}
+
+.destacada__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.destacada__titulo {
+  margin-top: 10px;
+  max-width: 180px;
+  font-size: var(--texto-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.destacada__icono {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.destacada__accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 0 18px;
+  height: 48px;
+  border-radius: var(--radio);
+  background: var(--lima);
+  color: var(--grafito);
+  font-weight: 600;
+  font-size: var(--texto-h4);
+}
+
+.disciplinas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.disciplina {
+  position: relative;
+  aspect-ratio: 109 / 118;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.disciplina img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.disciplina::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.85));
+}
+
+.disciplina__nombre {
+  position: absolute;
+  z-index: 1;
+  left: 8px;
+  bottom: 8px;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--gris-claro);
+}
+
+.evento-mini {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.evento-mini__foto {
+  flex: none;
+  width: 96px;
+  height: 71px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.evento-mini__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.evento-mini__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.evento-mini__fecha {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.evento-mini__titulo {
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.evento-mini__texto {
+  margin-top: 2px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-medio);
+}
+
+.evento-mini .icono {
+  flex: none;
+  color: var(--gris-claro);
+}
+
+.banner-tutoria {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radio);
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+.banner-tutoria__foto {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radio-total);
+  overflow: hidden;
+}
+
+.banner-tutoria__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-tutoria__cuerpo {
+  flex: 1;
+}
+
+.banner-tutoria__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.banner-tutoria__titulo {
+  margin-top: 6px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.noticia {
+  display: flex;
+  gap: 12px;
+  padding: 14px 15px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+}
+
+.noticia__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.noticia__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--morado);
+}
+
+.noticia__titulo {
+  margin-top: 6px;
+  font-size: var(--texto-h5);
+  font-weight: 600;
+}
+
+.noticia__texto {
+  margin-top: 6px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.noticia__foto {
+  flex: none;
+  align-self: center;
+  width: 72px;
+  height: 58px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.noticia__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 04 · Reservas ---------- */
+.filtros {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.filtros::-webkit-scrollbar {
+  display: none;
+}
+
+.filtro {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radio-medio);
+  border: 1px solid var(--gris-oscuro);
+  font-size: var(--texto-pequeno);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filtro--activo {
+  border-color: transparent;
+  background: var(--morado);
+  color: var(--gris-claro);
+  font-weight: 600;
+}
+
+.cancha {
+  position: relative;
+  border-radius: var(--radio-grande);
+  overflow: hidden;
+  background: var(--carbon);
+  color: var(--gris-claro);
+}
+
+.cancha img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cancha--expandida {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.cancha--expandida img {
+  opacity: 0.35;
+}
+
+.cancha__estado {
+  position: relative;
+  align-self: flex-start;
+  margin-bottom: auto;
+  padding: 5px 10px;
+  border-radius: var(--radio-chico);
+  background: var(--lima);
+  color: var(--grafito);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.cancha__titulo {
+  position: relative;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.cancha__meta {
+  position: relative;
+  margin-top: 6px;
+  font-size: var(--texto-pequeno);
+}
+
+.cancha__pie {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.cancha__horario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--texto-pequeno);
+  font-weight: 500;
+}
+
+.cancha__accion {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 111px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: var(--radio);
+  background: var(--lima);
+  color: var(--grafito);
+  font-weight: 600;
+  font-size: var(--texto-h4);
+}
+
+.cancha__gratis {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  font-size: var(--texto-pequeno);
+  font-weight: 500;
+  color: var(--lima);
+}
+
+.cancha--compacta {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancha--compacta .cancha__foto {
+  position: relative;
+  height: 105px;
+}
+
+.cancha--compacta .cancha__cuerpo {
+  padding: 16px;
+}
+
+.cancha--compacta .cancha__pie {
+  margin-top: 14px;
+}
+
+/* ---------- 05 · Actividades ---------- */
+.evento-grande {
+  position: relative;
+  padding: 16px;
+  border-radius: var(--radio-grande);
+  overflow: hidden;
+  background: var(--carbon);
+  color: var(--gris-claro);
+  min-height: 182px;
+  display: flex;
+  flex-direction: column;
+}
+
+.evento-grande img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.evento-grande__sobre,
+.evento-grande__titulo,
+.evento-grande__texto,
+.evento-grande__fecha,
+.evento-grande__accion {
+  position: relative;
+}
+
+.evento-grande__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.evento-grande__titulo {
+  margin-top: 8px;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+  max-width: 220px;
+}
+
+.evento-grande__texto {
+  margin-top: 8px;
+  font-size: var(--texto-pequeno);
+  max-width: 220px;
+}
+
+.evento-grande__fecha {
+  margin-top: 6px;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.evento-grande__accion {
+  margin-top: auto;
+  padding-top: 16px;
+  display: block;
+}
+
+.evento-grande__accion span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 205px;
+  height: 44px;
+  border-radius: var(--radio);
+  background: var(--lima);
+  color: var(--grafito);
+  font-weight: 600;
+}
+
+.banner-grande {
+  position: relative;
+  padding: 16px;
+  border-radius: var(--radio-grande);
+  background: var(--morado);
+  color: var(--gris-claro);
+  overflow: hidden;
+}
+
+.banner-grande__foto {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 123px;
+  height: 100px;
+  border-radius: 0 0 0 var(--radio);
+  overflow: hidden;
+}
+
+.banner-grande__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-grande__sobre {
+  position: relative;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.banner-grande__titulo {
+  position: relative;
+  margin-top: 10px;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 190px;
+}
+
+.banner-grande__accion {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  font-size: var(--texto-h6);
+  font-weight: 600;
+}
+
+.tarjeta-entrenamiento {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 112px;
+  padding: 14px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+}
+
+.tarjeta-entrenamiento__foto {
+  flex: none;
+  width: 84px;
+  height: 92px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tarjeta-entrenamiento__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-entrenamiento__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.tarjeta-entrenamiento__titulo {
+  font-size: var(--texto-h5);
+  font-weight: 600;
+}
+
+.tarjeta-entrenamiento__meta {
+  margin-top: 4px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.tarjeta-entrenamiento__horario {
+  margin-top: 2px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+  font-weight: 500;
+}
+
+.tarjeta-entrenamiento__enlace {
+  margin-top: 6px;
+  display: block;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--morado);
+}
+
+.oportunidad__titulo {
+  font-size: var(--texto-h2);
+  font-weight: 600;
+}
+
+.oportunidad__texto {
+  margin-top: 12px;
+  color: var(--gris-oscuro);
+}
+
+.tutoria-mini {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.tutoria-mini__titulo {
+  font-weight: 600;
+}
+
+.tutoria-mini__texto {
+  margin-top: 4px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-medio);
+}
+
+.tutoria-mini__enlace {
+  margin-top: 10px;
+  display: block;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--lima);
+}

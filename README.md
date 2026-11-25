@@ -26,13 +26,16 @@ js/componentes.js       Piezas que se repiten (marca, campo, botón, íconos)
 js/app.js               El motor: cambia de pantalla y maneja "atrás"
 js/pantallas.js         Pantalla "en construcción"
 js/pantallas-acceso.js  Acceso y registro (pantallas 00 a 15 de Figma)
+js/pantallas-estudiante.js  App del estudiante: inicio, reservas y actividades (03, 04, 05)
 img/                    Fotos y logo (las 28 fotos están pendientes)
 ```
 
 ## Qué pantallas están listas
 
 - Acceso y registro: splash, bienvenida, iniciar sesión (estudiante, externo y administración), elegir perfil, cuenta institucional, crear cuenta (2 pasos), verificar correo, cuenta creada, recuperar contraseña, código, nueva contraseña y contraseña actualizada.
-- Falta: app del estudiante, app del usuario externo, panel de administración, avisos del sistema, pagos y perfil, y nuevos espacios.
+- App del estudiante: inicio, reservas (lista de espacios) y actividades (eventos, tutorías y clases). Incluyen ya la navegación inferior (Inicio / Reservas / Actividades / Perfil).
+- Falta: el paso a paso de reservar una cancha (elegir fecha y hora, confirmar, pagar), inscribirse a un evento, postularse a tutorías, el perfil del estudiante, la app del usuario externo, el panel de administración, avisos del sistema y pagos.
+- **Nota:** en la pantalla de Reservas, los botones "Reservar" de cada cancha todavía llevan a una pantalla "en construcción": el paso a paso completo de reserva (elegir horario, confirmar, pagar) se agrega en el siguiente avance, junto con el resto del flujo del estudiante.
 
 ## Íconos
 
@@ -51,7 +54,8 @@ en GitHub Pages). Para cambiarlas, guarda la foto real **con el mismo nombre** e
 | `image 2.jpg` | 01 · Bienvenida |
 | `DSC01443 1.jpg`, `image 3.jpg` | 03 · Inicio |
 | `Cancha de basquetbol.jpg`, `Cancha de voleibol.jpg`, `Cancha de futbol.jpg` | 04 · Reservas |
-| `IMG_0600 1.jpg`, `DSC01418 1.jpg` | 05 · Actividades |
+| `IMG_0600 1.jpg`, `DSC01418 1.jpg`, `DSC01443 2.jpg` | 05 · Actividades |
+| `Fotografia de la cancha ping pong.jpg`, `Fotografia taekwondo.jpg`, `Fotografia.jpg` | 04 · Reservas (ping pong, taekwondo, gimnasio) |
 | `Fotografia de noticia.jpg` | 17 · Detalle de noticia |
 | `Fotografia de la cancha.jpg` | 18, 37, 38, 63, 64 · Detalle de la cancha / reserva |
 | `Fotografia de la cancha ping pong.jpg` | 18-PP · Ping pong |

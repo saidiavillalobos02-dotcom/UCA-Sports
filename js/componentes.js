@@ -22,12 +22,48 @@ const UI = {
     estrella: "star",
     usuario: "person",
     reloj: "schedule",
-    visto: "check"
+    visto: "check",
+    inicio: "home",
+    campana: "notifications",
+    flecha: "chevron_right"
   },
 
   icono(nombre, tamano = 24) {
     const google = this.ICONOS[nombre] || nombre;
     return `<span class="icono material-symbols-rounded" style="--tamano:${tamano}px" aria-hidden="true">${google}</span>`;
+  },
+
+  /* Los 4 botones de la navegación inferior del estudiante */
+  NAV_ESTUDIANTE: [
+    { id: "estudiante-inicio", icono: "inicio", texto: "Inicio" },
+    { id: "estudiante-reservas", icono: "calendario", texto: "Reservas" },
+    { id: "estudiante-actividades", icono: "trofeo", texto: "Actividades" },
+    { id: "estudiante-perfil", icono: "usuario", texto: "Perfil" }
+  ],
+
+  /* Barra fija de abajo. "activo" es el id de la pantalla actual */
+  navInferior(activo, items = this.NAV_ESTUDIANTE) {
+    const botones = items
+      .map((item) => {
+        const esActivo = item.id === activo;
+        return `
+        <a class="nav-inferior__item${esActivo ? " nav-inferior__item--activo" : ""}" data-ir="${item.id}">
+          ${esActivo ? '<span class="nav-inferior__indicador"></span>' : ""}
+          ${this.icono(item.icono, 24)}
+          <span class="nav-inferior__texto">${item.texto}</span>
+        </a>`;
+      })
+      .join("");
+    return `<nav class="nav-inferior" aria-label="Navegación principal">${botones}</nav>`;
+  },
+
+  /* Barra superior fija de las pantallas con sesión iniciada */
+  barraApp() {
+    return `
+      <div class="app-barra">
+        <p class="app-barra__marca">UCA SPORTS</p>
+        <button type="button" class="app-barra__campana" data-ir="notificaciones" aria-label="Notificaciones">${this.icono("campana", 24)}</button>
+      </div>`;
   },
 
   /* ---------- Piezas de pantalla ---------- */

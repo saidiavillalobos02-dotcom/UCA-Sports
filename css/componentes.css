@@ -419,3 +419,95 @@
 .tarjeta--grafito .tarjeta__sobre {
   color: var(--lima);
 }
+
+/* 18. Pantallas con sesión iniciada: barra superior + contenido + navegación */
+.pantalla--app {
+  padding: 0;
+  background: var(--blanco);
+  color: var(--grafito);
+}
+
+.app-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  padding: 14px var(--margen) 0;
+}
+
+.app-barra__marca {
+  font-size: var(--texto-h6);
+  font-weight: 600;
+}
+
+.app-barra__campana {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  color: inherit;
+}
+
+.app-contenido {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px var(--margen) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  scrollbar-width: none;
+}
+
+.app-contenido::-webkit-scrollbar {
+  display: none;
+}
+
+/* Título de sección + enlace "ver todos / ver agenda..." */
+.encabezado-lista {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.encabezado-lista .enlace {
+  font-size: var(--texto-pequeno);
+  white-space: nowrap;
+}
+
+/* 19. Navegación inferior (Inicio / Reservas / Actividades / Perfil) */
+.nav-inferior {
+  flex: none;
+  display: flex;
+  background: var(--gris-claro);
+}
+
+.nav-inferior__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 0 12px;
+  color: var(--gris-oscuro);
+  font-size: var(--texto-pequeno);
+  font-weight: 500;
+  text-align: center;
+}
+
+.nav-inferior__indicador {
+  position: absolute;
+  top: 0;
+  width: 58px;
+  height: 3px;
+  border-radius: var(--radio-chico);
+  background: var(--morado);
+}
+
+.nav-inferior__item--activo {
+  color: var(--morado);
+  font-weight: 600;
+}
