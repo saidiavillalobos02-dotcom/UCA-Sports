@@ -13,6 +13,13 @@ const UCA = {
   reservas: DATOS.misReservas,
   inscripciones: DATOS.misInscripciones,
   postulaciones: DATOS.misTutorias,
+  // Quién usa la app: "estudiante" o "externo". Cambia al entrar a sus pantallas
+  rol: "estudiante",
+
+  /* Los avisos de quien está usando la app */
+  get avisos() {
+    return this.rol === "externo" ? DATOS.avisosExterno : DATOS.avisos;
+  },
 
   /* Registra una pantalla nueva. Se usa desde los archivos pantallas-*.js */
   registrar(id, pantalla) {
@@ -27,6 +34,8 @@ const UCA = {
     const pantalla = this.pantallas[id] || this.pantallas["pendiente"];
 
     UI.cerrarHoja(true); // si había una hoja abierta, se cierra al cambiar de pantalla
+    if (id.startsWith("externo-")) this.rol = "externo";
+    else if (id.startsWith("estudiante-")) this.rol = "estudiante";
     contenedor.innerHTML = pantalla.dibujar(dato);
     contenedor.scrollTop = 0;
     this.actual = id;

@@ -30,7 +30,9 @@ const DATOS = {
       incluye: ["Red", "Balones", "Iluminación", "Bancas"],
       horas: ["14:00", "15:00", "16:00", "17:00", "18:00", "19:00"],
       palabra: "cancha",
-      etiqueta: "Cancha"
+      etiqueta: "Cancha",
+      precioHora: 15, // usuarios externos (dato de ejemplo)
+      extra: { nombre: "Vestidores", costo: 5 }
     },
     voleibol: {
       nombre: "Cancha de voleibol",
@@ -42,7 +44,9 @@ const DATOS = {
       incluye: ["Red", "Balones", "Iluminación", "Bancas"],
       horas: ["14:00", "15:00", "16:00", "17:00", "18:00", "19:00"],
       palabra: "cancha",
-      etiqueta: "Cancha"
+      etiqueta: "Cancha",
+      precioHora: 15, // usuarios externos (dato de ejemplo)
+      extra: { nombre: "Vestidores", costo: 5 }
     },
     futbol: {
       nombre: "Cancha de fútbol",
@@ -54,7 +58,9 @@ const DATOS = {
       incluye: ["Porterías", "Balones", "Iluminación", "Bancas"],
       horas: ["14:00", "15:00", "16:00", "17:00", "18:00", "19:00"],
       palabra: "cancha",
-      etiqueta: "Cancha"
+      etiqueta: "Cancha",
+      precioHora: 15, // usuarios externos (dato de ejemplo)
+      extra: { nombre: "Vestidores", costo: 5 }
     },
     "ping-pong": {
       nombre: "Mesa de ping pong",
@@ -66,7 +72,9 @@ const DATOS = {
       incluye: ["Mesa", "Paletas", "Pelotas", "Red"],
       horas: ["14:00", "15:00", "16:00", "17:00"],
       palabra: "mesa",
-      etiqueta: "Espacio"
+      etiqueta: "Espacio",
+      precioHora: 8, // usuarios externos (dato de ejemplo)
+      extra: { nombre: "Paletas y pelotas", costo: 2 }
     }
   },
 
@@ -287,6 +295,92 @@ const DATOS = {
     { id: "a3", grupo: "ESTA SEMANA", categoria: "eventos", icono: "trofeo", titulo: "Nuevo evento disponible", texto: "Copa interfacultades · hasta el 19 nov.", tiempo: "Lun", leido: true, ir: "evento/copa-interfacultades" },
     { id: "a4", grupo: "ESTA SEMANA", categoria: "reservas", icono: "reloj", titulo: "Recordatorio de reserva", texto: "Tu cancha de básquetbol es el viernes.", tiempo: "Dom", leido: true, ir: "mis-reservas" },
     { id: "a5", grupo: "ESTA SEMANA", categoria: "reservas", icono: "calendario", titulo: "Horario bloqueado", texto: "Cancha de fútbol en mantenimiento.", tiempo: "Sáb", leido: true, ir: "detalle-cancha/futbol" }
+  ],
+
+  /* ==========================================================
+     USUARIO EXTERNO (pantallas 41 a 59) · todo es de ejemplo
+     ========================================================== */
+  externo: {
+    nombre: "Carlos Hernández",
+    nombreVisible: "Carlos Hernández",
+    foto: "",
+    correo: "carlos.hdz@gmail.com",
+    dui: "05678912-3",
+    telefono: "7890-1234",
+    organizacion: "Club Deportivo Los Pinos",
+    tarjeta: { marca: "Visa", ultimos: "1234" } // tarjeta guardada (solo marca y últimos 4)
+  },
+
+  horasMaximas: 2, // un usuario externo puede pedir hasta 2 horas seguidas
+  tiposActividad: ["Entrenamiento", "Torneo", "Evento comunitario", "Otro"],
+
+  // Solicitudes de espacio. estado: "revision", "aprobada" o "rechazada"
+  solicitudes: [
+    {
+      codigo: "SOL-1187", cancha: "futbol", fecha: "2026-11-18", hora: "15:00", fin: "17:00", horas: 2, personas: 18,
+      nombre: "Carlos Hernández", dui: "05678912-3", organizacion: "Club Deportivo Los Pinos",
+      tipo: "Entrenamiento", descripcion: "Entrenamiento semanal de nuestro equipo juvenil de fútbol: 18 jugadores y 2 entrenadores.",
+      extra: true, total: 35, pago: { tipo: "tarjeta", texto: "Visa •••• 1234", fecha: "2026-11-17" },
+      enviada: "2026-11-17", estado: "revision"
+    },
+    {
+      codigo: "SOL-1102", reserva: "R-4990", cancha: "voleibol", fecha: "2026-11-07", hora: "9:00", fin: "11:00", horas: 2, personas: 10,
+      nombre: "Carlos Hernández", dui: "05678912-3", organizacion: "Club Deportivo Los Pinos",
+      tipo: "Torneo", descripcion: "Torneo relámpago de voleibol entre los equipos del club.",
+      extra: false, total: 30, pago: { tipo: "tarjeta", texto: "Visa •••• 1234", fecha: "2026-11-05" },
+      enviada: "2026-11-04", estado: "aprobada"
+    },
+    {
+      codigo: "SOL-1150", cancha: "basquetbol", fecha: "2026-10-31", hora: "14:00", fin: "15:00", horas: 1, personas: 8,
+      nombre: "Carlos Hernández", dui: "05678912-3", organizacion: "",
+      tipo: "Entrenamiento", descripcion: "Práctica de tiros y fundamentos con amigos del barrio.",
+      extra: false, total: 15, pago: { tipo: "tarjeta", texto: "Visa •••• 1234", fecha: "2026-10-29" },
+      enviada: "2026-10-29", estado: "rechazada",
+      motivoRechazo: "El espacio fue asignado a una actividad institucional en ese horario.",
+      reembolso: { estado: "acreditado", fecha: "2026-11-02" }
+    }
+  ],
+
+  // Eventos y clases abiertos a la comunidad (51 a 55, TK y GM)
+  eventosExternos: [
+    {
+      id: "copa-comunitaria", tipo: "evento", deporte: "Fútbol", sobre: "FÚTBOL · ABIERTO AL PÚBLICO",
+      titulo: "Copa amistosa<br>comunitaria", corto: "Copa amistosa comunitaria", subtitulo: "Equipos invitados de la comunidad",
+      resumen: "Abierto al público", fecha: "2026-11-22", hora: "9:00 a. m.", cupo: { inscritos: 20, total: 60 }, costo: 0,
+      foto: "Fotografia futbol.jpg", confirmacion: "¡Nos vemos en<br>la copa!"
+    },
+    {
+      id: "torneo-abierto", tipo: "evento", deporte: "Voleibol", sobre: "VOLEIBOL · TORNEO ABIERTO",
+      titulo: "Torneo de<br>voleibol abierto", corto: "Torneo de voleibol abierto", subtitulo: "Equipos de 4 personas",
+      resumen: "Equipos de 4 personas", fecha: "2026-11-23", hora: "8:00 a. m.", cupo: { inscritos: 6, total: 16 }, costo: 5,
+      foto: "Fotografia voleibol.jpg", confirmacion: "¡Nos vemos en<br>el torneo!"
+    },
+    {
+      id: "clinica-basquetbol", tipo: "evento", deporte: "Básquetbol", sobre: "BÁSQUETBOL · CLÍNICA",
+      titulo: "Clínica de<br>básquetbol", corto: "Clínica de básquetbol", subtitulo: "Para jóvenes de 12 a 17 años",
+      resumen: "Para jóvenes de 12 a 17 años", fecha: "2026-11-29", hora: "10:00 a. m.", cupo: { inscritos: 11, total: 20 }, costo: 8,
+      foto: "Fotografia basquetbol.jpg", confirmacion: "¡Nos vemos en<br>la clínica!"
+    },
+    {
+      id: "clase-taekwondo", tipo: "clase", deporte: "Taekwondo", sobre: "TAEKWONDO · CLASES ABIERTAS",
+      titulo: "Clases de<br>taekwondo", corto: "Clases de taekwondo", subtitulo: "Clases con instructor · todos los niveles",
+      dias: "Lun y mié", diasLargo: "los lunes y miércoles", diasNumero: [1, 3], hora: "5:00 p. m.",
+      cupo: { inscritos: 6, total: 16 }, costo: 4, foto: "Fotografia taekwondo.jpg", confirmacion: "¡Nos vemos en<br>la clase!"
+    },
+    {
+      id: "clase-gimnasio", tipo: "clase", deporte: "Gimnasio", sobre: "GIMNASIO · ENTRENAMIENTO ABIERTO",
+      titulo: "Entrenamiento<br>de gimnasio", corto: "Entrenamiento de gimnasio", subtitulo: "Entrenamiento con instructor · todos los niveles",
+      dias: "Mar y jue", diasLargo: "los martes y jueves", diasNumero: [2, 4], hora: "4:30 p. m.",
+      cupo: { inscritos: 8, total: 20 }, costo: 4, foto: "Fotografia gimnasio.jpg", confirmacion: "¡Nos vemos en<br>el gimnasio!"
+    }
+  ],
+  inscripcionesExternas: [],
+
+  avisosExterno: [
+    { id: "e1", grupo: "HOY", categoria: "reservas", icono: "reloj", titulo: "Solicitud en revisión", texto: "Cancha de fútbol · Mié 18, 3:00 p. m.", tiempo: "1 h", leido: false, ir: "detalle-solicitud/SOL-1187" },
+    { id: "e2", grupo: "ESTA SEMANA", categoria: "eventos", icono: "trofeo", titulo: "Nuevo evento abierto", texto: "Copa amistosa comunitaria · Dom 22 nov.", tiempo: "Lun", leido: true, ir: "evento-externo/copa-comunitaria" },
+    { id: "e3", grupo: "ANTERIORES", categoria: "reservas", icono: "visto", titulo: "Solicitud aprobada", texto: "Cancha de voleibol · Sáb 7 nov, 9:00 a. m.", tiempo: "5 nov", leido: true, ir: "solicitud-aprobada/SOL-1102" },
+    { id: "e4", grupo: "ANTERIORES", categoria: "reservas", icono: "alerta", titulo: "Solicitud no aprobada", texto: "Reembolso de $15.00 acreditado.", tiempo: "2 nov", leido: true, ir: "solicitud-rechazada/SOL-1150" }
   ],
 
   // Noticia (17)

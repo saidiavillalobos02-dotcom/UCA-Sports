@@ -175,6 +175,14 @@ const UI = {
     { id: "estudiante-perfil", icono: "usuario", texto: "Perfil" }
   ],
 
+  /* Los 4 botones de la navegación inferior del usuario externo */
+  NAV_EXTERNO: [
+    { id: "externo-inicio", icono: "inicio", texto: "Inicio" },
+    { id: "externo-reservas", icono: "calendario", texto: "Reservas" },
+    { id: "externo-eventos", icono: "trofeo", texto: "Eventos" },
+    { id: "externo-perfil", icono: "usuario", texto: "Perfil" }
+  ],
+
   /* Barra fija de abajo. "activo" es el id de la pantalla actual */
   navInferior(activo, items = this.NAV_ESTUDIANTE) {
     const botones = items

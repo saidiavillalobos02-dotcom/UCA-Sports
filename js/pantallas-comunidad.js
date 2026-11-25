@@ -38,7 +38,7 @@
           <div class="app-contenido">
             <h1 class="titulo">Tus avisos</h1>
             <div class="filtros" aria-label="Filtrar avisos">
-              ${FILTROS_AVISOS.map(([valor, texto], i) => `<button type="button" class="filtro${i === 0 ? " filtro--activo" : ""}" data-filtro="${valor}" aria-pressed="${i === 0}">${texto}</button>`).join("")}
+              ${FILTROS_AVISOS.filter(([valor]) => UCA.rol !== "externo" || valor !== "tutorias").map(([valor, texto], i) => `<button type="button" class="filtro${i === 0 ? " filtro--activo" : ""}" data-filtro="${valor}" aria-pressed="${i === 0}">${texto}</button>`).join("")}
             </div>
             <div class="avisos" data-lista></div>
           </div>
@@ -49,7 +49,7 @@
       const lista = contenedor.querySelector("[data-lista]");
 
       const pintar = () => {
-        const avisos = DATOS.avisos.filter((a) => filtro === "todos" || a.categoria === filtro);
+        const avisos = UCA.avisos.filter((a) => filtro === "todos" || a.categoria === filtro);
         if (!avisos.length) {
           lista.innerHTML = `<p class="avisos__vacio">No tienes avisos de este tipo.</p>`;
           return;
@@ -93,7 +93,7 @@
         if (enlace) {
           // Al abrir un aviso, queda como leído
           evento.preventDefault();
-          const aviso = DATOS.avisos.find((a) => a.id === enlace.dataset.aviso);
+          const aviso = UCA.avisos.find((a) => a.id === enlace.dataset.aviso);
           aviso.leido = true;
           UCA.ir(aviso.ir);
         }

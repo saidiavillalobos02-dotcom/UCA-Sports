@@ -2437,3 +2437,509 @@
   font-size: var(--texto-pequeno);
   color: var(--gris-oscuro);
 }
+
+/* ==========================================================
+   USUARIO EXTERNO (41 a 59)
+   ========================================================== */
+
+/* Etiquetas extra */
+.etiqueta--rechazada {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.etiqueta--codigo {
+  background: rgba(232, 232, 232, 0.16);
+  color: var(--gris-claro);
+}
+
+/* ---------- 41 · Inicio ---------- */
+.disciplinas--desliza {
+  display: flex;
+  margin: 0 -24px;
+  padding: 0 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.disciplinas--desliza::-webkit-scrollbar {
+  display: none;
+}
+
+.disciplinas--desliza .disciplina {
+  flex: 0 0 109px;
+}
+
+.solicitud-mini {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 56px 14px 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.solicitud-mini__sobre {
+  margin-bottom: 4px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.solicitud-mini__titulo {
+  font-size: var(--texto-h4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.solicitud-mini > .icono {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: var(--lima);
+}
+
+.tarifas-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+  text-align: left;
+}
+
+.tarifas-banner__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--morado);
+}
+
+.tarifas-banner__titulo {
+  margin-top: 4px;
+  font-size: var(--texto-h5);
+  font-weight: 600;
+}
+
+.tarifas-banner__texto {
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.tarifas__extra {
+  font-size: var(--texto-pequeno);
+  opacity: 0.75;
+}
+
+/* ---------- 44 a 47 · Pasos de la solicitud ---------- */
+.paso-solicitud__texto {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+.paso-solicitud__barra {
+  height: 5px;
+  margin-top: 6px;
+  border-radius: var(--radio-total);
+  background: var(--gris-medio);
+  overflow: hidden;
+}
+
+.paso-solicitud__barra span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-total);
+  background: var(--morado);
+}
+
+.resumen-espacio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.resumen-espacio__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.resumen-espacio__texto {
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.resumen-espacio > .icono {
+  flex: none;
+  color: var(--lima);
+}
+
+.contador--pantalla {
+  margin-top: 0;
+}
+
+/* 46 · Desglose del costo */
+.desglose {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 16px;
+  border-radius: var(--radio-grande);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.desglose .resumen__fila {
+  margin: 0;
+}
+
+.desglose__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.desglose__extra {
+  font-size: inherit;
+}
+
+.desglose__extra-derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desglose__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(232, 232, 232, 0.25);
+  font-weight: 600;
+}
+
+.desglose__total strong {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--lima);
+}
+
+/* 47 · Total a pagar */
+.otra-tarjeta {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 4px 0;
+}
+
+.total-pagar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.total-pagar__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.total-pagar__texto {
+  margin-top: 2px;
+  font-size: var(--texto-pequeno);
+}
+
+.total-pagar__precio {
+  flex: none;
+  font-size: var(--texto-h2);
+  font-weight: 600;
+}
+
+.app-pie .pago-seguro {
+  margin-top: 10px;
+}
+
+/* 48 y 58 · Línea de pasos con código, y versión clara */
+.estado-pasos__sobre--fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.estado-pasos--claro {
+  margin-top: 0;
+  background: var(--blanco);
+  color: var(--grafito);
+}
+
+.estado-pasos--claro .estado-pasos__sobre {
+  color: var(--grafito);
+}
+
+.estado-pasos--claro .estado-paso__texto {
+  color: var(--gris-oscuro);
+}
+
+.estado-pasos--claro .estado-paso--hecho .estado-paso__marca {
+  border-color: var(--lima);
+  background: var(--lima);
+}
+
+.estado-pasos--claro .estado-paso--actual .estado-paso__marca {
+  border-color: var(--morado);
+}
+
+.estado-pasos--claro .estado-paso--actual .estado-paso__marca::after {
+  background: var(--morado);
+}
+
+.estado-paso--rechazado .estado-paso__marca {
+  border-color: var(--rojo);
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+/* ---------- 50 · Solicitud rechazada ---------- */
+.circulo--rechazo {
+  width: 64px;
+  height: 64px;
+}
+
+.motivo-caja {
+  padding: 14px 15px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+}
+
+.motivo-caja__sobre {
+  margin-bottom: 6px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.reembolso-caja {
+  position: relative;
+  padding: 16px;
+  border-radius: var(--radio-grande);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.reembolso-caja__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reembolso-caja__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.reembolso-caja__monto {
+  margin-top: 4px;
+  font-size: var(--texto-h2);
+  font-weight: 600;
+}
+
+.reembolso-caja__texto {
+  margin-top: 6px;
+  padding-right: 40px;
+  font-size: var(--texto-pequeno);
+}
+
+.reembolso-caja > .icono {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  color: var(--lima);
+}
+
+.horarios-libres {
+  justify-content: space-between;
+}
+
+.horarios-libres .circulo {
+  order: 2;
+}
+
+/* ---------- 56 · Perfil ---------- */
+.avatar--oscuro {
+  background: var(--grafito);
+  color: var(--lima);
+}
+
+/* ---------- 57 · Mis solicitudes ---------- */
+.solicitud-tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px 12px 14px;
+  border: 1px solid var(--grafito);
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.solicitud-tarjeta--borde {
+  border-color: var(--gris-oscuro);
+  background: transparent;
+  color: var(--grafito);
+}
+
+.solicitud-tarjeta__cuerpo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.solicitud-tarjeta__titulo {
+  margin-top: 8px;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.solicitud-tarjeta__fecha {
+  font-size: var(--texto-pequeno);
+}
+
+.solicitud-tarjeta__pie {
+  margin-top: 2px;
+  font-size: var(--texto-pequeno);
+  color: var(--lima);
+}
+
+.solicitud-tarjeta--borde .solicitud-tarjeta__pie {
+  color: var(--gris-oscuro);
+}
+
+.solicitud-tarjeta__foto {
+  flex: none;
+  width: 80px;
+  height: 56px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.solicitud-tarjeta__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.solicitud-tarjeta > .icono {
+  flex: none;
+}
+
+/* ---------- 58 · Detalle de solicitud ---------- */
+.dato__valor--ajusta {
+  white-space: normal;
+}
+
+.detalle-solicitud__enlace {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 6px;
+  padding: 6px 0;
+}
+
+/* ---------- 59 · Pagos y comprobantes ---------- */
+.pagado-caja {
+  padding: 18px 16px;
+  border-radius: var(--radio-grande);
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+.pagado-caja__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.pagado-caja__fila {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.pagado-caja__monto {
+  font-size: var(--texto-h1);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pagado-caja__texto {
+  font-size: var(--texto-pequeno);
+}
+
+.movimientos {
+  display: grid;
+  gap: 8px;
+}
+
+.movimiento {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 12px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.movimiento__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.movimiento__titulo {
+  display: block;
+  font-weight: 600;
+}
+
+.movimiento__texto {
+  display: block;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.movimiento__derecha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex: none;
+}
+
+.movimiento__derecha .etiqueta {
+  align-self: flex-end;
+}
+
+.movimiento__monto {
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+/* 41 · Tarjeta destacada morada del usuario externo */
+.destacada--morada {
+  background: var(--morado);
+}

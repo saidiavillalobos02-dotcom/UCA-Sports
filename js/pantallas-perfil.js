@@ -221,7 +221,9 @@
     }
   });
 
-  /* ---------- 35b · Cambiar foto (hoja) ---------- */
+  /* ---------- 35b · Cambiar foto (hoja) ----------
+     También la usa el usuario externo (56b) */
+  UI.hojaFoto = (estado, alCambiar) => hojaFoto(estado, alCambiar);
   function hojaFoto(estado, alCambiar) {
     const hoja = UI.abrirHoja(
       `

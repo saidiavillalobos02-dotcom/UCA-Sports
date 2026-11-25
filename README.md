@@ -39,7 +39,13 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
   - Comunidad: notificaciones, noticia, calendario de eventos, detalle de eventos y clases, inscripción con equipo, pago con tarjeta o transferencia e inscripción confirmada (24 a 34).
   - Tutorías: oportunidades, postulación, requisitos y postulación enviada (29 a 32).
   - Perfil: perfil, editar perfil y foto, mis reservas, detalle de reserva, cancelar reserva, reserva cancelada, mis inscripciones y mis tutorías (35 a 40).
-- Falta: la app del usuario externo y el panel de administración.
+- App del usuario externo (completa):
+  - Inicio, Reservas, Eventos y Perfil, con su propia barra de abajo (Inicio / Reservas / Eventos / Perfil).
+  - Solicitar un espacio en 3 pasos: horario (hasta 2 horas seguidas), tus datos, motivo de uso, resumen de costo y pago con tarjeta o transferencia (41 a 48).
+  - Respuesta de administración: solicitud aprobada y no aprobada con reembolso (49 y 50).
+  - Eventos y clases con costo para la comunidad, pago e inscripción confirmada (51 a 55, taekwondo y gimnasio).
+  - Perfil, editar perfil y foto, mis solicitudes, detalle de solicitud y pagos y comprobantes (56 a 59).
+- Falta: el panel de administración.
 
 ## Cómo se comporta (como una app de verdad)
 
@@ -55,6 +61,7 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 - **Todo queda conectado**: lo que reservas, cancelas, te inscribes o te postulas aparece en tu perfil, en notificaciones y en las horas ocupadas del calendario (mientras no recargues la página).
 - **Perfil editable**: puedes cambiar tu nombre para mostrar (2 a 24 letras) y tu foto (JPG o PNG de hasta 5 MB). "Guardar cambios" solo se enciende si cambiaste algo.
 - **Cancelar una reserva** libera ese horario para otros, y "Agregar a mi calendario" descarga un archivo que abre el calendario del teléfono o la computadora.
+- **Usuario externo**: elige hasta 2 horas seguidas, el costo se calcula solo ($15.00 por hora en canchas y $8.00 en ping pong, más vestidores o paletas si los quiere), y puede pagar con su tarjeta guardada, con otra tarjeta o por transferencia. Sus solicitudes, pagos y avisos se guardan aparte de los del estudiante.
 - Esta lógica está en `js/componentes.js` (`UI.REGLAS` y `UI.activarFormularios`) y `js/app.js`.
 
 ## Íconos
