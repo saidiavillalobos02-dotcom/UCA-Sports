@@ -15,7 +15,7 @@ UCA.registrar("estudiante-inicio", {
         ${UI.barraApp()}
         <div class="app-contenido">
           <div>
-            <h1 class="inicio__saludo">¡Hola, Andrea!</h1>
+            <h1 class="inicio__saludo">¡Hola, ${UI.escapar(DATOS.estudiante.nombreVisible.split(" ")[0])}!</h1>
             <p class="inicio__subtexto">Tu comunidad también juega aquí.</p>
           </div>
 
@@ -32,15 +32,15 @@ UCA.registrar("estudiante-inicio", {
               ${UI.enlace("Ver todos", "estudiante-reservas")}
             </div>
             <div class="disciplinas">
-              <a class="disciplina" data-ir="estudiante-reservas">
+              <a class="disciplina" data-ir="detalle-cancha/futbol">
                 <img src="img/Cancha%20de%20futbol.jpg" alt="Cancha de fútbol">
                 <span class="disciplina__nombre">Fútbol</span>
               </a>
-              <a class="disciplina" data-ir="estudiante-reservas">
+              <a class="disciplina" data-ir="detalle-cancha/voleibol">
                 <img src="img/Cancha%20de%20voleibol.jpg" alt="Cancha de voleibol">
                 <span class="disciplina__nombre">Voleibol</span>
               </a>
-              <a class="disciplina" data-ir="estudiante-reservas">
+              <a class="disciplina" data-ir="detalle-cancha/basquetbol">
                 <img src="img/Cancha%20de%20basquetbol.jpg" alt="Cancha de básquetbol">
                 <span class="disciplina__nombre">Básquetbol</span>
               </a>
@@ -50,9 +50,9 @@ UCA.registrar("estudiante-inicio", {
           <div>
             <div class="encabezado-lista">
               <p class="titulo-seccion">Próximos eventos</p>
-              ${UI.enlace("Ver agenda", "estudiante-actividades")}
+              ${UI.enlace("Ver agenda", "calendario-eventos")}
             </div>
-            <a class="evento-mini" data-ir="estudiante-actividades">
+            <a class="evento-mini" data-ir="evento/copa-interfacultades">
               <div class="evento-mini__foto"><img src="img/DSC01443%201.jpg" alt="Partido de la copa interfacultades"></div>
               <div class="evento-mini__cuerpo">
                 <p class="evento-mini__fecha">20 NOV · 4:00 p. m.</p>
@@ -109,7 +109,7 @@ UCA.registrar("estudiante-reservas", {
             <button type="button" class="filtro" data-filtro="ping-pong" aria-pressed="false">Ping pong</button>
           </div>
 
-          <a class="cancha cancha--expandida" data-ir="detalle-cancha" data-categoria="basquetbol">
+          <a class="cancha cancha--expandida" data-ir="detalle-cancha/basquetbol" data-categoria="basquetbol">
             <img src="img/Cancha%20de%20basquetbol.jpg" alt="Cancha de básquetbol">
             <span class="cancha__estado">Disponible</span>
             <p class="cancha__titulo">Cancha de básquetbol</p>
@@ -121,7 +121,7 @@ UCA.registrar("estudiante-reservas", {
             <span class="cancha__gratis">Sin costo para estudiantes UCA</span>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha" data-categoria="voleibol">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha/voleibol" data-categoria="voleibol">
             <div class="cancha__foto"><img src="img/Cancha%20de%20voleibol.jpg" alt="Cancha de voleibol"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Cancha de voleibol</p>
@@ -133,7 +133,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha" data-categoria="futbol">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha/futbol" data-categoria="futbol">
             <div class="cancha__foto"><img src="img/Cancha%20de%20futbol.jpg" alt="Cancha de fútbol"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Cancha de fútbol</p>
@@ -145,7 +145,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha-ping-pong" data-categoria="ping-pong">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha/ping-pong" data-categoria="ping-pong">
             <div class="cancha__foto"><img src="img/Fotografia%20de%20la%20cancha%20ping%20pong.jpg" alt="Mesa de ping pong"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Mesa de ping pong</p>
@@ -157,7 +157,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="actividad-taekwondo" data-categoria="clases">
+          <a class="cancha cancha--compacta" data-ir="evento/taekwondo" data-categoria="clases">
             <div class="cancha__foto"><img src="img/Fotografia%20taekwondo.jpg" alt="Clase de taekwondo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Taekwondo</p>
@@ -169,7 +169,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="actividad-gimnasio" data-categoria="clases">
+          <a class="cancha cancha--compacta" data-ir="evento/gimnasio" data-categoria="clases">
             <div class="cancha__foto"><img src="img/Fotografia.jpg" alt="Gimnasio del polideportivo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Gimnasio</p>
@@ -218,7 +218,7 @@ UCA.registrar("estudiante-actividades", {
 
           <div>
             <p class="titulo-seccion">Próximos partidos y eventos</p>
-            <a class="evento-grande sep-s" data-ir="evento-con-costo">
+            <a class="evento-grande sep-s" data-ir="evento/copa-interfacultades">
               <img src="img/DSC01443%202.jpg" alt="Partido de la copa interfacultades">
               <p class="evento-grande__sobre">FÚTBOL · COPA UCA</p>
               <p class="evento-grande__titulo">Copa interfacultades</p>
@@ -237,7 +237,7 @@ UCA.registrar("estudiante-actividades", {
 
           <div>
             <p class="titulo-seccion">Actividades deportivas</p>
-            <a class="tarjeta-entrenamiento sep-s" data-ir="actividad-voleibol">
+            <a class="tarjeta-entrenamiento sep-s" data-ir="evento/voleibol-abierto">
               <div class="tarjeta-entrenamiento__foto"><img src="img/IMG_0600%201.jpg" alt="Entrenamiento abierto de voleibol"></div>
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Voleibol para todos</p>
@@ -251,12 +251,12 @@ UCA.registrar("estudiante-actividades", {
           <div class="oportunidad">
             <p class="oportunidad__titulo">Comparte lo que sabes</p>
             <p class="oportunidad__texto">Participa como tutor y suma horas sociales. Consulta los requisitos antes de postularte.</p>
-            <a class="tutoria-mini" data-ir="postulacion-tutor">
+            <a class="tutoria-mini" data-ir="postulacion-tutor/basquetbol">
               <p class="tutoria-mini__titulo">Básquetbol · Fundamentos</p>
               <p class="tutoria-mini__texto">Tutor estudiantil · Convocatoria abierta</p>
               <span class="tutoria-mini__enlace">Quiero impartir tutorías →</span>
             </a>
-            <a class="tutoria-mini" data-ir="postulacion-tutor">
+            <a class="tutoria-mini" data-ir="postulacion-tutor/voleibol">
               <p class="tutoria-mini__titulo">Voleibol · Iniciación</p>
               <p class="tutoria-mini__texto">Tutor estudiantil · Convocatoria abierta</p>
               <span class="tutoria-mini__enlace">Quiero impartir tutorías →</span>
@@ -264,7 +264,7 @@ UCA.registrar("estudiante-actividades", {
           </div>
 
           <div>
-            <a class="tarjeta-entrenamiento" data-ir="actividad-con-costo">
+            <a class="tarjeta-entrenamiento" data-ir="evento/clinica-futbol">
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Clínica de fútbol</p>
                 <p class="tarjeta-entrenamiento__meta">Curso · 4 semanas · $5.00</p>
@@ -272,7 +272,7 @@ UCA.registrar("estudiante-actividades", {
                 <span class="tarjeta-entrenamiento__enlace">Conocer más →</span>
               </div>
             </a>
-            <a class="tarjeta-entrenamiento sep-s" data-ir="actividad-taekwondo">
+            <a class="tarjeta-entrenamiento sep-s" data-ir="evento/taekwondo">
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Taekwondo</p>
                 <p class="tarjeta-entrenamiento__meta">Clases · Todos los niveles</p>
@@ -280,7 +280,7 @@ UCA.registrar("estudiante-actividades", {
                 <span class="tarjeta-entrenamiento__enlace">Conocer más →</span>
               </div>
             </a>
-            <a class="tarjeta-entrenamiento sep-s" data-ir="actividad-gimnasio">
+            <a class="tarjeta-entrenamiento sep-s" data-ir="evento/gimnasio">
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Gimnasio</p>
                 <p class="tarjeta-entrenamiento__meta">Entrenamiento · Todos los niveles</p>

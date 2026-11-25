@@ -5,6 +5,48 @@
    revisión de formularios).
    ========================================================== */
 
+/* ---------- Fechas en español (las usan varias pantallas) ---------- */
+const FECHA = {
+  DIAS: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+  DIAS_CORTOS: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+  LETRAS: ["D", "L", "M", "M", "J", "V", "S"],
+  MESES: ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  MESES_CORTOS: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+
+  // "2026-11-20" → fecha
+  leer(texto) {
+    const [anio, mes, dia] = texto.split("-").map(Number);
+    return new Date(anio, mes - 1, dia);
+  },
+  // fecha → "2026-11-20"
+  clave(fecha) {
+    return `${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, "0")}-${String(fecha.getDate()).padStart(2, "0")}`;
+  },
+  sumarDias(fecha, cantidad) {
+    return new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate() + cantidad);
+  },
+  lunesDe(fecha) {
+    return this.sumarDias(new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate()), -((fecha.getDay() + 6) % 7));
+  },
+  // "Vie 20 nov"
+  mini(fecha) {
+    return `${this.DIAS_CORTOS[fecha.getDay()]} ${fecha.getDate()} ${this.MESES_CORTOS[fecha.getMonth()]}`;
+  },
+  // "viernes 20"
+  diaYNumero(fecha) {
+    return `${this.DIAS[fecha.getDay()].toLowerCase()} ${fecha.getDate()}`;
+  },
+  // "18 nov 2026"
+  corta(fecha) {
+    return `${fecha.getDate()} ${this.MESES_CORTOS[fecha.getMonth()]} ${fecha.getFullYear()}`;
+  },
+  // "Noviembre 2026"
+  mes(fecha) {
+    const nombre = this.MESES[fecha.getMonth()];
+    return `${nombre.charAt(0).toUpperCase()}${nombre.slice(1)} ${fecha.getFullYear()}`;
+  }
+};
+
 const UI = {
   /* ---------- Íconos ----------
      Usamos la librería gratuita de Google: Material Symbols (Rounded).
@@ -27,7 +69,12 @@ const UI = {
     inicio: "home",
     campana: "notifications",
     flecha: "chevron_right",
-    alerta: "error"
+    flechaIzq: "chevron_left",
+    alerta: "error",
+    personas: "group",
+    etiquetaPrecio: "sell",
+    mas: "add",
+    menos: "remove"
   },
 
   icono(nombre, tamano = 24) {
@@ -68,6 +115,31 @@ const UI = {
     "igual-clave": {
       revisar: (valor, formulario) => valor === (formulario.querySelector("#clave") || {}).value,
       mensaje: "Las contraseñas no coinciden."
+    },
+    tarjeta: {
+      revisar: (valor) => /^\d{15,16}$/.test(valor.replace(/\s/g, "")),
+      mensaje: "El número de tarjeta tiene 16 dígitos."
+    },
+    vence: {
+      // Formato MM / AA, con un mes real y que no esté vencida
+      revisar: (valor) => {
+        const partes = valor.match(/^(\d{2}) \/ (\d{2})$/);
+        if (!partes) return false;
+        const mes = Number(partes[1]);
+        const anio = 2000 + Number(partes[2]);
+        if (mes < 1 || mes > 12) return false;
+        const hoy = DATOS.hoy;
+        return anio > hoy.getFullYear() || (anio === hoy.getFullYear() && mes >= hoy.getMonth() + 1);
+      },
+      mensaje: "Revisa la fecha: mes y año (MM / AA), sin estar vencida."
+    },
+    cvv: {
+      revisar: (valor) => /^\d{3,4}$/.test(valor),
+      mensaje: "El CVV son los 3 números de atrás de la tarjeta."
+    },
+    equipo: {
+      revisar: (valor) => valor.trim().length >= 3,
+      mensaje: "El nombre del equipo debe tener al menos 3 letras."
     }
   },
 
@@ -80,6 +152,16 @@ const UI = {
     telefono(valor) {
       const numeros = valor.replace(/\D/g, "").slice(0, 8);
       return numeros.length > 4 ? `${numeros.slice(0, 4)}-${numeros.slice(4)}` : numeros;
+    },
+    tarjeta(valor) {
+      return valor.replace(/\D/g, "").slice(0, 16).replace(/(\d{4})(?=\d)/g, "$1 ");
+    },
+    vence(valor) {
+      const numeros = valor.replace(/\D/g, "").slice(0, 4);
+      return numeros.length > 2 ? `${numeros.slice(0, 2)} / ${numeros.slice(2)}` : numeros;
+    },
+    cvv(valor) {
+      return valor.replace(/\D/g, "").slice(0, 4);
     }
   },
 
@@ -116,6 +198,53 @@ const UI = {
         <p class="app-barra__marca">UCA SPORTS</p>
         <button type="button" class="app-barra__campana" data-ir="notificaciones" aria-label="Notificaciones">${this.icono("campana", 24)}</button>
       </div>`;
+  },
+
+  /* Barra de las pantallas internas: flecha de volver + ruta (ej. "RESERVAS / VOLEIBOL") */
+  barraVolver(ruta) {
+    return `
+      <div class="app-barra app-barra--volver">
+        ${this.volver()}
+        <p class="app-barra__ruta">${ruta}</p>
+      </div>`;
+  },
+
+  /* ---------- Hoja que sube desde abajo ----------
+     Se cierra al tocar fuera de ella, con la tecla Esc o con un
+     botón que tenga data-cerrar-hoja. Devuelve la hoja para darle vida. */
+  abrirHoja(contenido, etiqueta = "Hoja") {
+    this.cerrarHoja(true);
+    const marco = document.querySelector(".marco-telefono");
+    const avisoAnterior = marco.querySelector(".aviso-flotante");
+    if (avisoAnterior) avisoAnterior.remove();
+    const fondo = document.createElement("div");
+    fondo.className = "hoja-fondo";
+    fondo.innerHTML = `
+      <section class="hoja" role="dialog" aria-modal="true" aria-label="${etiqueta}">
+        <span class="hoja__asa" aria-hidden="true"></span>
+        ${contenido}
+      </section>`;
+    fondo.addEventListener("click", (evento) => {
+      if (evento.target === fondo) this.cerrarHoja();
+    });
+    fondo.querySelectorAll("[data-cerrar-hoja]").forEach((boton) => {
+      boton.addEventListener("click", () => this.cerrarHoja());
+    });
+    marco.appendChild(fondo);
+    this.hojaAbierta = fondo;
+    return fondo.querySelector(".hoja");
+  },
+
+  cerrarHoja(inmediato = false) {
+    const fondo = this.hojaAbierta;
+    if (!fondo) return;
+    this.hojaAbierta = null;
+    if (inmediato) {
+      fondo.remove();
+      return;
+    }
+    fondo.classList.add("hoja-fondo--saliendo");
+    setTimeout(() => fondo.remove(), 200);
   },
 
   /* ---------- Piezas de pantalla ---------- */
@@ -295,7 +424,7 @@ const UI = {
      código tiene sus 6 dígitos. Los errores se muestran debajo de
      cada campo cuando la persona ya escribió algo y salió del campo. */
   activarFormularios(contenedor) {
-    contenedor.querySelectorAll("form[data-envio]").forEach((formulario) => {
+    contenedor.querySelectorAll("form[data-envio], form[data-formulario]").forEach((formulario) => {
       const boton = formulario.querySelector('button[type="submit"]');
       if (!boton) return;
       const campos = [...formulario.querySelectorAll(".campo__entrada")];

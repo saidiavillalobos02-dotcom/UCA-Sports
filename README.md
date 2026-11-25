@@ -33,9 +33,13 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 ## Qué pantallas están listas
 
 - Acceso y registro: splash, bienvenida, iniciar sesión (estudiante, externo y administración), elegir perfil, cuenta institucional, crear cuenta (2 pasos), verificar correo, cuenta creada, recuperar contraseña, código, nueva contraseña y contraseña actualizada.
-- App del estudiante: inicio, reservas (lista de espacios) y actividades (eventos, tutorías y clases). Incluyen ya la navegación inferior (Inicio / Reservas / Actividades / Perfil).
-- Falta: el paso a paso de reservar una cancha (elegir fecha y hora, confirmar, pagar), inscribirse a un evento, postularse a tutorías, el perfil del estudiante, la app del usuario externo, el panel de administración, avisos del sistema y pagos.
-- **Nota:** en la pantalla de Reservas, los botones "Reservar" de cada cancha todavía llevan a una pantalla "en construcción": el paso a paso completo de reserva (elegir horario, confirmar, pagar) se agrega en el siguiente avance, junto con el resto del flujo del estudiante.
+- App del estudiante (completa):
+  - Inicio, Reservas (lista de espacios) y Actividades, con la barra de abajo (Inicio / Reservas / Actividades / Perfil).
+  - Reservar una cancha: detalle, elegir día y hora, tu reserva, confirmar y reserva confirmada (16 a 23, y 90 · horario ocupado).
+  - Comunidad: notificaciones, noticia, calendario de eventos, detalle de eventos y clases, inscripción con equipo, pago con tarjeta o transferencia e inscripción confirmada (24 a 34).
+  - Tutorías: oportunidades, postulación, requisitos y postulación enviada (29 a 32).
+  - Perfil: perfil, editar perfil y foto, mis reservas, detalle de reserva, cancelar reserva, reserva cancelada, mis inscripciones y mis tutorías (35 a 40).
+- Falta: la app del usuario externo y el panel de administración.
 
 ## Cómo se comporta (como una app de verdad)
 
@@ -48,6 +52,9 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 - **Recuerda lo que escribes**: la pantalla del código muestra el correo que pusiste en el paso anterior.
 - **Barras fijas**: en la app del estudiante, la barra de arriba y la de abajo no se mueven; solo se desplaza el contenido de en medio.
 - **Filtros de Reservas**: Todos / Básquetbol / Voleibol / Fútbol / Ping pong muestran solo esos espacios.
+- **Todo queda conectado**: lo que reservas, cancelas, te inscribes o te postulas aparece en tu perfil, en notificaciones y en las horas ocupadas del calendario (mientras no recargues la página).
+- **Perfil editable**: puedes cambiar tu nombre para mostrar (2 a 24 letras) y tu foto (JPG o PNG de hasta 5 MB). "Guardar cambios" solo se enciende si cambiaste algo.
+- **Cancelar una reserva** libera ese horario para otros, y "Agregar a mi calendario" descarga un archivo que abre el calendario del teléfono o la computadora.
 - Esta lógica está en `js/componentes.js` (`UI.REGLAS` y `UI.activarFormularios`) y `js/app.js`.
 
 ## Íconos
@@ -75,6 +82,8 @@ en GitHub Pages). Para cambiarlas, guarda la foto real **con el mismo nombre** e
 | `Fotografia.jpg` | 25 a 34, 52 a 54, 78 · Eventos y actividades |
 | `Fotografia taekwondo.jpg`, `Fotografia danza.jpg` | Pantallas TK y DZ |
 | `DSC01422 1.jpg`, `DSC01443 2.jpg`, `image 4.jpg` | 39 · Mis inscripciones |
+| `Fotografia voleibol.jpg`, `Fotografia basquetbol.jpg`, `Fotografia futbol.jpg`, `Fotografia gimnasio.jpg` | 18 y 37 · Detalle de cada cancha |
+| `1.jpg` | 40 · Mis tutorías (tutoría activa) |
 | `Simbolo.svg` | 00 · Splash (símbolo del logo; exportarlo de Figma como SVG) |
 
 Consejo: exporta las fotos en JPG, de unos 1000 px de ancho, para que la página cargue rápido.

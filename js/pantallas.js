@@ -12,7 +12,7 @@ UCA.registrar("pendiente", {
         <span class="etiqueta">En construcción</span>
         <h1 class="titulo">Esta pantalla aún no está lista</h1>
         <p class="parrafo">La estamos programando. Vuelve pronto.</p>
-        <div class="pendiente__accion">${UI.boton("Volver", { ir: "bienvenida" })}</div>
+        <div class="pendiente__accion"><button type="button" class="boton" data-atras>Volver</button></div>
       </section>`;
   }
 });

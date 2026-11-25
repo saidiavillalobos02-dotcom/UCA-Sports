@@ -9,18 +9,25 @@ const UCA = {
   pasos: 0,        // cuántas pantallas lleva la persona dentro de la app
   actual: null,
   sesion: {},      // lo que la persona escribió (correo, nombre...) mientras usa el prototipo
+  // Lo que la persona tiene (empieza con los ejemplos de datos.js y crece al usar la app)
+  reservas: DATOS.misReservas,
+  inscripciones: DATOS.misInscripciones,
+  postulaciones: DATOS.misTutorias,
 
   /* Registra una pantalla nueva. Se usa desde los archivos pantallas-*.js */
   registrar(id, pantalla) {
     this.pantallas[id] = pantalla;
   },
 
-  /* Muestra una pantalla en el marco */
-  mostrar(id) {
+  /* Muestra una pantalla en el marco.
+     "dato" es lo que va después de la barra en la dirección: en
+     #/detalle-cancha/voleibol, la pantalla es "detalle-cancha" y el dato "voleibol" */
+  mostrar(id, dato = "") {
     const contenedor = document.getElementById("app");
     const pantalla = this.pantallas[id] || this.pantallas["pendiente"];
 
-    contenedor.innerHTML = pantalla.dibujar(id);
+    UI.cerrarHoja(true); // si había una hoja abierta, se cierra al cambiar de pantalla
+    contenedor.innerHTML = pantalla.dibujar(dato);
     contenedor.scrollTop = 0;
     this.actual = id;
 
@@ -29,7 +36,7 @@ const UCA = {
 
     // Cada pantalla puede tener su propio comportamiento (opcional)
     if (typeof pantalla.alMostrar === "function") {
-      pantalla.alMostrar(contenedor);
+      pantalla.alMostrar(contenedor, dato);
     }
   },
 
@@ -51,8 +58,9 @@ const UCA = {
 
   /* Lee la dirección y muestra la pantalla que corresponde */
   leerDireccion() {
-    const id = window.location.hash.replace("#/", "") || "splash";
-    this.mostrar(id);
+    const ruta = decodeURIComponent(window.location.hash.replace("#/", "")) || "splash";
+    const [id, dato = ""] = ruta.split("/");
+    this.mostrar(id, dato);
   },
 
   /* Arranque */
@@ -91,6 +99,11 @@ const UCA = {
       boton.classList.add("boton--cargando");
       boton.textContent = boton.dataset.cargando || "Un momento…";
       setTimeout(() => this.ir(formulario.dataset.envio), 700);
+    });
+
+    // La tecla Esc cierra la hoja que esté abierta
+    document.addEventListener("keydown", (evento) => {
+      if (evento.key === "Escape") UI.cerrarHoja();
     });
 
     window.addEventListener("hashchange", () => this.leerDireccion());

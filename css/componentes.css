@@ -562,10 +562,10 @@
 
 /* 22. Aviso flotante (ej. "Te enviamos un código nuevo") */
 .aviso-flotante {
+  z-index: 30;
   position: absolute;
   left: 50%;
   bottom: 96px;
-  z-index: 10;
   max-width: calc(100% - 48px);
   padding: 12px 18px;
   border-radius: var(--radio);
@@ -576,4 +576,749 @@
   text-align: center;
   transform: translateX(-50%);
   animation: entrar 0.25s ease;
+}
+
+/* 23. Pantallas internas (detalle, elegir horario): fondo gris, barra con flecha y botón fijo abajo */
+.pantalla.pantalla--gris {
+  background: var(--gris-claro);
+}
+
+.app-barra--volver {
+  justify-content: flex-start;
+  gap: 4px;
+  padding-top: 10px;
+}
+
+.app-barra--volver .volver {
+  margin: 0 0 0 -10px;
+}
+
+.app-barra__ruta {
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.app-pie {
+  flex: none;
+  padding: 12px var(--margen) 24px;
+}
+
+/* 24. Hoja que sube desde abajo */
+.hoja-fondo {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.55);
+  animation: aparecer 0.2s ease;
+}
+
+.hoja-fondo--saliendo {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hoja {
+  position: relative;
+  width: 100%;
+  max-height: 92%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 32px var(--margen) 28px;
+  border-radius: var(--radio-grande) var(--radio-grande) 0 0;
+  background: var(--gris-claro);
+  color: var(--grafito);
+  animation: subir 0.25s ease;
+}
+
+.hoja__asa {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 40px;
+  height: 4px;
+  border-radius: var(--radio-total);
+  background: var(--gris-medio);
+  transform: translateX(-50%);
+}
+
+.hoja__titulo {
+  font-size: var(--texto-h2);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hoja__texto {
+  margin-top: 6px;
+  color: var(--gris-oscuro);
+}
+
+.hoja__sobre {
+  margin-top: 20px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  text-transform: uppercase;
+}
+
+.hoja__boton {
+  margin-top: 20px;
+}
+
+.hoja__enlace {
+  display: block;
+  margin: 14px auto 0;
+  padding: 6px 12px;
+}
+
+.hoja__otra {
+  margin-top: 16px;
+}
+
+@keyframes subir {
+  from { transform: translateY(100%); }
+  to   { transform: none; }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 25. Opciones de una sola elección (como "Entrenamiento / Partido amistoso") */
+.opciones {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 8px 14px;
+  border: 1px solid var(--gris-medio);
+  border-radius: var(--radio);
+  background: var(--blanco);
+  cursor: pointer;
+}
+
+.opcion--elegida {
+  border: 2px solid var(--morado);
+  padding: 7px 13px;
+}
+
+.opcion__entrada {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opcion__radio {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gris-medio);
+  border-radius: var(--radio-total);
+}
+
+.opcion--elegida .opcion__radio {
+  border-color: var(--morado);
+  background: var(--morado);
+  box-shadow: inset 0 0 0 3px var(--blanco);
+}
+
+.opcion__entrada:focus-visible + .opcion__radio {
+  outline: 3px solid var(--morado);
+  outline-offset: 2px;
+}
+
+.opcion__titulo {
+  display: block;
+  font-weight: 600;
+}
+
+.opcion__texto {
+  display: block;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+/* 26. Contador (− 8 +) */
+.contador {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.contador__titulo {
+  font-weight: 600;
+}
+
+.contador__texto {
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.contador__control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contador__boton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--gris-oscuro);
+  border-radius: var(--radio-total);
+  color: var(--grafito);
+}
+
+.contador__boton--mas {
+  border-color: var(--morado);
+  background: var(--morado);
+  color: var(--blanco);
+}
+
+.contador__boton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.contador__valor {
+  min-width: 26px;
+  font-size: var(--texto-h3);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* 27. Chips (horarios libres) */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chip {
+  padding: 10px 18px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: var(--radio);
+  font-weight: 600;
+}
+
+.chip--elegido {
+  border-color: var(--morado);
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+/* 28. Etiqueta con borde (ej. "Red", "Balones") y círculo de aviso amarillo */
+.etiqueta--borde {
+  border: 1px solid var(--gris-oscuro);
+  background: transparent;
+}
+
+.circulo--aviso {
+  width: 56px;
+  height: 56px;
+  background: #ffdb43;
+}
+
+/* 29. Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 30. Variantes de etiqueta */
+.etiqueta--oscura {
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.etiqueta--aviso {
+  background: #ffdb43;
+}
+
+/* 31. Formularios dentro de una hoja */
+.hoja__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.hoja__formulario .hoja__boton {
+  margin-top: 4px;
+}
+
+.hoja__nota {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.hoja__nota .icono {
+  color: var(--morado);
+}
+
+.campos-dos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.campos-dos > * {
+  min-width: 0;
+}
+
+#titular {
+  text-transform: uppercase;
+}
+
+#titular::placeholder {
+  text-transform: none;
+}
+
+/* 32. Interruptor (encendido / apagado) */
+.interruptor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: var(--texto-pequeno);
+  cursor: pointer;
+}
+
+.interruptor__entrada {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.interruptor__pista {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--gris-medio);
+  transition: background-color 0.2s ease;
+}
+
+.interruptor__pista::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--blanco);
+  transition: transform 0.2s ease;
+}
+
+.interruptor__entrada:checked + .interruptor__pista {
+  background: var(--morado);
+}
+
+.interruptor__entrada:checked + .interruptor__pista::after {
+  transform: translateX(18px);
+}
+
+.interruptor__entrada:focus-visible + .interruptor__pista {
+  outline: 3px solid var(--morado);
+  outline-offset: 2px;
+}
+
+/* 33. Pago: concepto, método, total y avisos */
+.concepto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.concepto__titulo {
+  font-weight: 600;
+}
+
+.concepto__texto {
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.concepto__precio {
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.metodo {
+  min-height: 64px;
+  padding: 10px 14px 10px 10px;
+}
+
+.metodo.opcion--elegida {
+  padding: 9px 13px 9px 9px;
+}
+
+.metodo__icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radio-total);
+  background: var(--grafito);
+  color: var(--lima);
+}
+
+.opcion--elegida .metodo__icono {
+  background: var(--morado);
+  color: var(--blanco);
+}
+
+.metodo__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gris-medio);
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.total strong {
+  font-size: var(--texto-h2);
+  font-weight: 600;
+}
+
+.hoja__formulario .total {
+  margin-top: 4px;
+}
+
+.pago-seguro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+  text-align: center;
+}
+
+.pago-aviso {
+  margin-top: 6px;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  text-align: center;
+}
+
+/* 34. Subir un archivo (comprobante) */
+.archivo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  margin-top: 8px;
+  padding: 12px;
+  border: 2px dashed var(--gris-medio);
+  border-radius: var(--radio-grande);
+  background: var(--blanco);
+  cursor: pointer;
+}
+
+.archivo:focus-within {
+  border-color: var(--morado);
+}
+
+.archivo--cargado {
+  border: 2px solid var(--morado);
+}
+
+.archivo__entrada {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.archivo__icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-total);
+  background: var(--morado);
+  color: var(--blanco);
+}
+
+.archivo__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.archivo__nombre {
+  display: block;
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.archivo__texto {
+  display: block;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.archivo__visto {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radio-total);
+  background: var(--lima);
+  color: var(--grafito);
+}
+
+.archivo__visto[hidden] {
+  display: none;
+}
+
+/* 35. Enlace debajo del botón fijo de abajo */
+.app-pie__enlace {
+  display: block;
+  margin: 12px auto 0;
+  text-align: center;
+}
+
+/* 36. Campo de texto largo (textarea) con contador */
+.campo__caja--area {
+  flex-direction: column;
+  align-items: stretch;
+  height: auto;
+  padding: 12px 15px 8px;
+}
+
+.campo__area {
+  width: 100%;
+  min-height: 64px;
+  resize: none;
+  line-height: 1.45;
+}
+
+.campo__contador {
+  align-self: flex-end;
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+/* 37. Grupo de opciones (fieldset sin borde) y chips pequeños */
+.grupo {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.grupo__titulo {
+  margin-bottom: 8px;
+  padding: 0;
+  font-weight: 600;
+}
+
+.grupo__ayuda {
+  margin-top: 8px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.chips--formulario {
+  margin-top: 0;
+}
+
+.chip--chico {
+  padding: 12px 16px;
+  font-size: var(--texto-pequeno);
+}
+
+/* 38. Caja lima (ej. horas sociales en una hoja) */
+.caja-lima {
+  position: relative;
+  margin-top: 24px;
+  padding: 18px 60px 18px 20px;
+  border-radius: var(--radio-grande);
+  background: var(--lima);
+  color: var(--grafito);
+}
+
+.caja-lima__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.caja-lima__texto {
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.caja-lima .icono {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+
+/* 39. Botones de peligro y con borde */
+.boton--peligro {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.boton--borde {
+  border: 1.5px solid var(--gris-oscuro);
+  background: transparent;
+  color: var(--grafito);
+}
+
+.boton--borde-rojo {
+  border: 1.5px solid var(--rojo);
+  background: transparent;
+  color: var(--rojo);
+}
+
+.hoja__boton-segundo {
+  margin-top: 12px;
+}
+
+.circulo--peligro {
+  width: 56px;
+  height: 56px;
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+/* 40. Más variantes de etiqueta */
+.etiqueta--gris {
+  background: var(--gris-medio);
+}
+
+.etiqueta--cancelada {
+  background: #f6d3d6;
+  color: var(--rojo);
+}
+
+.etiqueta--lima {
+  color: var(--lima);
+}
+
+.etiqueta--suave {
+  background: rgba(232, 232, 232, 0.16);
+  color: var(--gris-claro);
+}
+
+/* 41. Pestañas (Próximas / Historial) */
+.pestanas {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.pestana {
+  height: 36px;
+  border-radius: var(--radio-chico);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.pestana--activa {
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+/* 42. Ayuda debajo de un campo y campo que no se puede editar */
+.campo__ayuda {
+  margin-top: 6px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.campo__caja--fija {
+  justify-content: space-between;
+  gap: 10px;
+  border-color: var(--gris-medio);
+  color: var(--gris-oscuro);
+}
+
+/* 43. Lista de opciones en una hoja (Tomar foto, Galería...) */
+.lista-opciones {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.lista-opciones__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 10px 12px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+  text-align: left;
+  cursor: pointer;
+}
+
+.lista-opciones__item:focus-within {
+  outline: 3px solid var(--morado);
+  outline-offset: 2px;
+}
+
+.lista-opciones__item--peligro .menu-perfil__icono {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.lista-opciones__item--peligro .menu-perfil__titulo {
+  color: var(--rojo);
+}
+
+.lista-opciones__item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
