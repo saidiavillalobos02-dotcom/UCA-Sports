@@ -6,25 +6,28 @@
 
 const UI = {
   /* ---------- Íconos ----------
-     Estos íconos son provisionales (dibujos de línea simples).
-     Cuando exportemos los de Figma a img/iconos/, se cambian aquí. */
+     Usamos la librería gratuita de Google: Material Symbols (Rounded).
+     Aquí se traduce el nombre en español al nombre que usa Google.
+     Lista completa de íconos: https://fonts.google.com/icons */
   ICONOS: {
-    atras: '<path d="M15 18l-6-6 6-6"/>',
-    ojo: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
-    correo: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>',
-    candado: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
-    escudo: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
-    birrete: '<path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>',
-    calendario: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
-    trofeo: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.7V17c0 .6-.5 1-1 1.2-1.2.6-2 2-2 3.8M14 14.7V17c0 .6.5 1 1 1.2 1.2.6 2 2 2 3.8M18 2H6v7a6 6 0 0 0 12 0V2z"/>',
-    estrella: '<path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1L12 2z"/>',
-    usuario: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-    reloj: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
-    visto: '<path d="M20 6L9 17l-5-5"/>'
+    atras: "arrow_back_ios_new",
+    ojo: "visibility",
+    ojoCerrado: "visibility_off",
+    correo: "mail",
+    candado: "lock",
+    escudo: "verified_user",
+    birrete: "school",
+    calendario: "calendar_today",
+    trofeo: "emoji_events",
+    estrella: "star",
+    usuario: "person",
+    reloj: "schedule",
+    visto: "check"
   },
 
   icono(nombre, tamano = 24) {
-    return `<svg class="icono" width="${tamano}" height="${tamano}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${this.ICONOS[nombre]}</svg>`;
+    const google = this.ICONOS[nombre] || nombre;
+    return `<span class="icono material-symbols-rounded" style="--tamano:${tamano}px" aria-hidden="true">${google}</span>`;
   },
 
   /* ---------- Piezas de pantalla ---------- */
@@ -100,6 +103,7 @@ const UI = {
         const estabaOculta = entrada.type === "password";
         entrada.type = estabaOculta ? "text" : "password";
         boton.setAttribute("aria-pressed", String(estabaOculta));
+        boton.querySelector(".icono").textContent = this.ICONOS[estabaOculta ? "ojoCerrado" : "ojo"];
       });
     });
   },

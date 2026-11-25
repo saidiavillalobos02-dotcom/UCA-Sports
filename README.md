@@ -34,14 +34,33 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 - Acceso y registro: splash, bienvenida, iniciar sesión (estudiante, externo y administración), elegir perfil, cuenta institucional, crear cuenta (2 pasos), verificar correo, cuenta creada, recuperar contraseña, código, nueva contraseña y contraseña actualizada.
 - Falta: app del estudiante, app del usuario externo, panel de administración, avisos del sistema, pagos y perfil, y nuevos espacios.
 
-## Archivos que faltan poner en `img/`
+## Íconos
 
-Se exportan desde Figma y se guardan con estos nombres:
+Usamos **Material Symbols (Rounded)**, la librería gratuita de íconos de Google.
+Se carga desde internet en `index.html`. Los nombres están en `js/componentes.js`
+(sección "Íconos"). Para buscar otro ícono: https://fonts.google.com/icons
 
-- `logo-simbolo.svg`: el símbolo del logo "Impulso" (se ve en el splash).
-- `bienvenida.jpg`: la foto de la pantalla de bienvenida.
+## Imágenes
 
-Mientras no estén, el prototipo muestra un espacio reservado y sigue funcionando.
+Las imágenes de `img/` son **de ejemplo**: un degradado morado con el nombre del archivo escrito.
+Tienen el mismo nombre que la capa de la imagen en Figma (sin tildes, para evitar problemas
+en GitHub Pages). Para cambiarlas, guarda la foto real **con el mismo nombre** encima de la de ejemplo.
+
+| Archivo | Pantalla de Figma |
+| --- | --- |
+| `image 2.jpg` | 01 · Bienvenida |
+| `DSC01443 1.jpg`, `image 3.jpg` | 03 · Inicio |
+| `Cancha de basquetbol.jpg`, `Cancha de voleibol.jpg`, `Cancha de futbol.jpg` | 04 · Reservas |
+| `IMG_0600 1.jpg`, `DSC01418 1.jpg` | 05 · Actividades |
+| `Fotografia de noticia.jpg` | 17 · Detalle de noticia |
+| `Fotografia de la cancha.jpg` | 18, 37, 38, 63, 64 · Detalle de la cancha / reserva |
+| `Fotografia de la cancha ping pong.jpg` | 18-PP · Ping pong |
+| `Fotografia.jpg` | 25 a 34, 52 a 54, 78 · Eventos y actividades |
+| `Fotografia taekwondo.jpg`, `Fotografia danza.jpg` | Pantallas TK y DZ |
+| `DSC01422 1.jpg`, `DSC01443 2.jpg`, `image 4.jpg` | 39 · Mis inscripciones |
+| `Simbolo.svg` | 00 · Splash (símbolo del logo; exportarlo de Figma como SVG) |
+
+Consejo: exporta las fotos en JPG, de unos 1000 px de ancho, para que la página cargue rápido.
 
 ## Identidad visual
 

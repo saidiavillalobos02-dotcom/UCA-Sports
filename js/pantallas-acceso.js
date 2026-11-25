@@ -68,7 +68,7 @@ UCA.registrar("splash", {
   dibujar() {
     return `
       <section class="pantalla splash" data-ir="bienvenida" role="button" tabindex="0" aria-label="UCA SPORTS. Toca para continuar">
-        <img class="splash__simbolo" src="img/logo-simbolo.svg" alt="" width="140" height="140" onerror="this.remove()">
+        <img class="splash__simbolo" src="img/Simbolo.svg" alt="" width="140" height="140" onerror="this.remove()">
         <p class="splash__marca"><span class="splash__uca">UCA</span><span class="splash__sports">SPORTS</span></p>
       </section>`;
   },
@@ -87,8 +87,7 @@ UCA.registrar("bienvenida", {
       <section class="pantalla pantalla--oscura">
         ${UI.marca(true)}
         <div class="foto bienvenida__foto">
-          <span>Foto pendiente</span>
-          <img src="img/bienvenida.jpg" alt="Balón de fútbol sobre el pasto" onerror="this.remove()">
+          <img src="img/image%202.jpg" alt="Balón de fútbol sobre el pasto" width="346" height="231">
         </div>
         <span class="etiqueta bienvenida__lema">TU CAMPUS. TU CANCHA.</span>
         <h1 class="titulo bienvenida__titulo">El deporte también<br>es parte de tu<br>experiencia UCA</h1>
