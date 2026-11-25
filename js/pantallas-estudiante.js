@@ -101,15 +101,15 @@ UCA.registrar("estudiante-reservas", {
             <p class="inicio__subtexto">Haz espacio para lo que te mueve.</p>
           </div>
 
-          <div class="filtros">
-            <span class="filtro filtro--activo">Todos</span>
-            <span class="filtro">Básquetbol</span>
-            <span class="filtro">Voleibol</span>
-            <span class="filtro">Fútbol</span>
-            <span class="filtro">Ping pong</span>
+          <div class="filtros" role="tablist" aria-label="Filtrar espacios">
+            <button type="button" class="filtro filtro--activo" data-filtro="todos" aria-pressed="true">Todos</button>
+            <button type="button" class="filtro" data-filtro="basquetbol" aria-pressed="false">Básquetbol</button>
+            <button type="button" class="filtro" data-filtro="voleibol" aria-pressed="false">Voleibol</button>
+            <button type="button" class="filtro" data-filtro="futbol" aria-pressed="false">Fútbol</button>
+            <button type="button" class="filtro" data-filtro="ping-pong" aria-pressed="false">Ping pong</button>
           </div>
 
-          <a class="cancha cancha--expandida" data-ir="detalle-cancha">
+          <a class="cancha cancha--expandida" data-ir="detalle-cancha" data-categoria="basquetbol">
             <img src="img/Cancha%20de%20basquetbol.jpg" alt="Cancha de básquetbol">
             <span class="cancha__estado">Disponible</span>
             <p class="cancha__titulo">Cancha de básquetbol</p>
@@ -121,7 +121,7 @@ UCA.registrar("estudiante-reservas", {
             <span class="cancha__gratis">Sin costo para estudiantes UCA</span>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha" data-categoria="voleibol">
             <div class="cancha__foto"><img src="img/Cancha%20de%20voleibol.jpg" alt="Cancha de voleibol"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Cancha de voleibol</p>
@@ -133,7 +133,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha" data-categoria="futbol">
             <div class="cancha__foto"><img src="img/Cancha%20de%20futbol.jpg" alt="Cancha de fútbol"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Cancha de fútbol</p>
@@ -145,7 +145,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="detalle-cancha-ping-pong">
+          <a class="cancha cancha--compacta" data-ir="detalle-cancha-ping-pong" data-categoria="ping-pong">
             <div class="cancha__foto"><img src="img/Fotografia%20de%20la%20cancha%20ping%20pong.jpg" alt="Mesa de ping pong"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Mesa de ping pong</p>
@@ -157,7 +157,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="actividad-taekwondo">
+          <a class="cancha cancha--compacta" data-ir="actividad-taekwondo" data-categoria="clases">
             <div class="cancha__foto"><img src="img/Fotografia%20taekwondo.jpg" alt="Clase de taekwondo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Taekwondo</p>
@@ -169,7 +169,7 @@ UCA.registrar("estudiante-reservas", {
             </div>
           </a>
 
-          <a class="cancha cancha--compacta" data-ir="actividad-gimnasio">
+          <a class="cancha cancha--compacta" data-ir="actividad-gimnasio" data-categoria="clases">
             <div class="cancha__foto"><img src="img/Fotografia.jpg" alt="Gimnasio del polideportivo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Gimnasio</p>
@@ -183,6 +183,23 @@ UCA.registrar("estudiante-reservas", {
         </div>
         ${UI.navInferior("estudiante-reservas")}
       </section>`;
+  },
+  alMostrar(contenedor) {
+    // Los filtros muestran solo los espacios del deporte elegido
+    const filtros = [...contenedor.querySelectorAll("[data-filtro]")];
+    const espacios = [...contenedor.querySelectorAll("[data-categoria]")];
+    filtros.forEach((filtro) => {
+      filtro.addEventListener("click", () => {
+        const elegido = filtro.dataset.filtro;
+        filtros.forEach((otro) => {
+          otro.classList.toggle("filtro--activo", otro === filtro);
+          otro.setAttribute("aria-pressed", String(otro === filtro));
+        });
+        espacios.forEach((espacio) => {
+          espacio.hidden = elegido !== "todos" && espacio.dataset.categoria !== elegido;
+        });
+      });
+    });
   }
 });
 

@@ -8,6 +8,7 @@ const UCA = {
   pantallas: {},   // todas las pantallas registradas
   pasos: 0,        // cuántas pantallas lleva la persona dentro de la app
   actual: null,
+  sesion: {},      // lo que la persona escribió (correo, nombre...) mientras usa el prototipo
 
   /* Registra una pantalla nueva. Se usa desde los archivos pantallas-*.js */
   registrar(id, pantalla) {
@@ -70,13 +71,26 @@ const UCA = {
       }
     });
 
-    // Los formularios (data-envio) pasan a la pantalla siguiente al enviarse
+    // Los formularios (data-envio) pasan a la pantalla siguiente al enviarse,
+    // pero solo si su botón está activo (es decir, si los datos tienen sentido)
     document.addEventListener("submit", (evento) => {
       const formulario = evento.target.closest("[data-envio]");
-      if (formulario) {
-        evento.preventDefault();
-        this.ir(formulario.dataset.envio);
-      }
+      if (!formulario) return;
+      evento.preventDefault();
+
+      const boton = formulario.querySelector('button[type="submit"]');
+      if (!boton || boton.disabled) return;
+
+      // Guarda lo escrito (ej. el correo) para usarlo en las pantallas siguientes
+      new FormData(formulario).forEach((valor, nombre) => {
+        if (!/clave/.test(nombre)) this.sesion[nombre] = String(valor).trim();
+      });
+
+      // Simula que "procesa" un momento, como una app real
+      boton.disabled = true;
+      boton.classList.add("boton--cargando");
+      boton.textContent = boton.dataset.cargando || "Un momento…";
+      setTimeout(() => this.ir(formulario.dataset.envio), 700);
     });
 
     window.addEventListener("hashchange", () => this.leerDireccion());

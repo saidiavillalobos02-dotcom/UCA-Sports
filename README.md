@@ -37,6 +37,19 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 - Falta: el paso a paso de reservar una cancha (elegir fecha y hora, confirmar, pagar), inscribirse a un evento, postularse a tutorías, el perfil del estudiante, la app del usuario externo, el panel de administración, avisos del sistema y pagos.
 - **Nota:** en la pantalla de Reservas, los botones "Reservar" de cada cancha todavía llevan a una pantalla "en construcción": el paso a paso completo de reserva (elegir horario, confirmar, pagar) se agrega en el siguiente avance, junto con el resto del flujo del estudiante.
 
+## Cómo se comporta (como una app de verdad)
+
+- **Los botones solo funcionan cuando los datos tienen sentido.** Mientras falte algo, el botón se ve apagado y no avanza:
+  - *Iniciar sesión (estudiante y administración):* correo que termine en `@uca.edu.sv` y contraseña escrita. *Usuario externo:* cualquier correo válido.
+  - *Crear cuenta:* nombre y apellido, DUI de 9 números, correo válido y teléfono de 8 números (el guion del DUI y del teléfono se pone solo). Luego, las dos contraseñas iguales, con los requisitos cumplidos y la casilla de normas marcada.
+  - *Códigos de verificación:* las 6 casillas vacías al entrar; el botón se activa al llenar las 6. "Reenviar código" aparece cuando termina la cuenta regresiva, borra las casillas y vuelve a contar.
+- **Mensajes de error debajo de cada campo** cuando lo escrito no cumple (por ejemplo, "Las contraseñas no coinciden").
+- **Al enviar**, el botón muestra un momento "Iniciando sesión…", "Verificando…", etc., como una app real.
+- **Recuerda lo que escribes**: la pantalla del código muestra el correo que pusiste en el paso anterior.
+- **Barras fijas**: en la app del estudiante, la barra de arriba y la de abajo no se mueven; solo se desplaza el contenido de en medio.
+- **Filtros de Reservas**: Todos / Básquetbol / Voleibol / Fútbol / Ping pong muestran solo esos espacios.
+- Esta lógica está en `js/componentes.js` (`UI.REGLAS` y `UI.activarFormularios`) y `js/app.js`.
+
 ## Íconos
 
 Usamos **Material Symbols (Rounded)**, la librería gratuita de íconos de Google.

@@ -11,6 +11,7 @@
   --lima: #c7f04a;
   --carbon: #101114;
   --blanco: #ffffff;
+  --rojo: #d23c3c; /* errores en formularios */
 
   /* Grises (los mismos nombres de Figma: neutral 200, 400, 800, 1000) */
   --gris-claro: #e8e8e8;
@@ -119,6 +120,7 @@ a {
    quietas, como en una app de verdad, en vez de que toda la página se mueva. */
 .marco-telefono {
   width: 100%;
+  position: relative; /* para el aviso flotante */
   height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -155,4 +157,9 @@ a {
     overflow: hidden;
     box-shadow: 0 0 0 10px #000, 0 30px 80px rgba(95, 49, 197, 0.45);
   }
+}
+
+/* 6. Lo que está oculto (ej. espacios filtrados) no se muestra nunca */
+[hidden] {
+  display: none !important;
 }

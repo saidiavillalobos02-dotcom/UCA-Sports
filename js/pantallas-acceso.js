@@ -8,12 +8,12 @@
 /* ---------- Ayudas que usan varias pantallas de este archivo ---------- */
 
 /* Correo + contraseña + "¿Olvidaste tu contraseña?" + botón (02, 02a y 02b) */
-function camposAcceso({ etiquetaCorreo, marcadorCorreo, tipoCorreo = "email" }) {
+function camposAcceso({ etiquetaCorreo, marcadorCorreo, tipoCorreo = "email", validar = "correo" }) {
   return `
-    ${UI.campo({ id: "correo", etiqueta: etiquetaCorreo, tipo: tipoCorreo, marcador: marcadorCorreo, autocompletar: "username" })}
+    ${UI.campo({ id: "correo", etiqueta: etiquetaCorreo, tipo: tipoCorreo, marcador: marcadorCorreo, autocompletar: "username", validar })}
     ${UI.campo({ id: "clave", etiqueta: "Contraseña", tipo: "password", marcador: "Ingresa tu contraseña", ojo: true, autocompletar: "current-password" })}
     ${UI.enlace("¿Olvidaste tu contraseña?", "recuperar-contrasena", "enlace--chico acceso__olvido")}
-    ${UI.boton("Iniciar sesión", { tipo: "submit" })}`;
+    ${UI.boton("Iniciar sesión", { tipo: "submit", cargando: "Iniciando sesión…" })}`;
 }
 
 /* Caja oscura con los requisitos de la contraseña (09 y 14) */
@@ -111,7 +111,7 @@ UCA.registrar("iniciar-sesion", {
         <h1 class="titulo bajo-volver">¡Qué bueno<br>tenerte aquí!</h1>
         <p class="subtitulo">Tu próxima jugada empieza aquí.</p>
         <form class="pila acceso__formulario" data-envio="estudiante-inicio" novalidate>
-          ${camposAcceso({ etiquetaCorreo: "Correo electrónico", marcadorCorreo: "00000000@uca.edu.sv" })}
+          ${camposAcceso({ etiquetaCorreo: "Correo electrónico", marcadorCorreo: "00000000@uca.edu.sv", validar: "correo-uca" })}
           <p class="acceso__registro">¿Aún no tienes cuenta? ${UI.enlace("Regístrate", "elegir-perfil")}</p>
           <div>
             <p class="acceso__sobre">Al registrarte, elige tu perfil</p>
@@ -140,7 +140,7 @@ UCA.registrar("acceso-admin", {
         <h1 class="titulo bajo-volver">Acceso<br>administración</h1>
         <p class="subtitulo">Solo para personal autorizado del Polideportivo.</p>
         <form class="pila acceso__formulario" data-envio="admin-inicio" novalidate>
-          ${camposAcceso({ etiquetaCorreo: "Correo institucional", marcadorCorreo: "admin@uca.edu.sv" })}
+          ${camposAcceso({ etiquetaCorreo: "Correo institucional", marcadorCorreo: "admin@uca.edu.sv", validar: "correo-uca" })}
           <div class="aviso">
             ${UI.icono("escudo", 26)}
             <p>Las cuentas de administración las asigna el Polideportivo UCA. Si necesitas acceso, solicítalo allí.</p>
@@ -274,10 +274,10 @@ UCA.registrar("crear-cuenta-datos", {
             </div>
             ${UI.icono("usuario", 22)}
           </div>
-          ${UI.campo({ id: "nombre", etiqueta: "Nombre completo", marcador: "Ej. María López", autocompletar: "name" })}
-          ${UI.campo({ id: "dui", etiqueta: "DUI", marcador: "00000000-0", modo: "numeric" })}
-          ${UI.campo({ id: "correo", etiqueta: "Correo electrónico", tipo: "email", marcador: "tu.correo@gmail.com", autocompletar: "email" })}
-          ${UI.campo({ id: "telefono", etiqueta: "Teléfono", tipo: "tel", marcador: "0000-0000", autocompletar: "tel", modo: "tel" })}
+          ${UI.campo({ id: "nombre", etiqueta: "Nombre completo", marcador: "Ej. María López", autocompletar: "name", validar: "nombre" })}
+          ${UI.campo({ id: "dui", etiqueta: "DUI", marcador: "00000000-0", modo: "numeric", validar: "dui" })}
+          ${UI.campo({ id: "correo", etiqueta: "Correo electrónico", tipo: "email", marcador: "tu.correo@gmail.com", autocompletar: "email", validar: "correo" })}
+          ${UI.campo({ id: "telefono", etiqueta: "Teléfono", tipo: "tel", marcador: "0000-0000", autocompletar: "tel", modo: "tel", validar: "telefono" })}
           ${UI.boton("Continuar", { tipo: "submit" })}
         </form>
       </section>`;
@@ -298,14 +298,14 @@ UCA.registrar("crear-cuenta-seguridad", {
         <h1 class="titulo sep-s">Protege tu<br>cuenta</h1>
         <form class="pila sep-m" data-envio="verificar-correo" novalidate>
           ${UI.campo({ id: "clave", etiqueta: "Contraseña", tipo: "password", marcador: "Crea tu contraseña", ojo: true, autocompletar: "new-password" })}
-          ${UI.campo({ id: "clave2", etiqueta: "Confirmar contraseña", tipo: "password", marcador: "Repite tu contraseña", ojo: true, autocompletar: "new-password" })}
+          ${UI.campo({ id: "clave2", etiqueta: "Confirmar contraseña", tipo: "password", marcador: "Repite tu contraseña", ojo: true, autocompletar: "new-password", validar: "igual-clave" })}
           ${requisitosClave("Tu contraseña debe tener")}
           <label class="aceptar">
-            <input class="aceptar__entrada" type="checkbox" checked>
+            <input class="aceptar__entrada" type="checkbox">
             <span class="aceptar__caja">${UI.icono("visto", 14)}</span>
-            <span>Acepto las ${UI.enlace("normas de uso del Polideportivo", "crear-cuenta-seguridad", "enlace--chico")}</span>
+            <span>Acepto las <span class="enlace enlace--chico">normas de uso del Polideportivo</span></span>
           </label>
-          ${UI.boton("Crear cuenta", { tipo: "submit" })}
+          ${UI.boton("Crear cuenta", { tipo: "submit", cargando: "Creando tu cuenta…" })}
         </form>
       </section>`;
   },
@@ -325,13 +325,13 @@ UCA.registrar("verificar-correo", {
           <span class="circulo">${UI.icono("correo", 22)}</span>
           <p class="tarjeta__sobre">Revisa tu bandeja</p>
           <p class="tarjeta__titulo">Te enviamos un código</p>
-          <p class="tarjeta__texto">Escríbelo para verificar tu.correo@gmail.com</p>
+          <p class="tarjeta__texto">Escríbelo para verificar ${UI.escapar(UCA.sesion.correo || "tu.correo@gmail.com")}</p>
         </div>
         <form class="pila sep-m" data-envio="cuenta-creada" novalidate>
           <h2 class="titulo-seccion">Código de 6 dígitos</h2>
-          ${UI.otp("482")}
-          <p class="reenviar" data-reenviar>${UI.icono("reloj", 16)}<span>Puedes reenviar el código en <span data-cuenta="45">0:45</span></span></p>
-          ${UI.boton("Verificar", { tipo: "submit" })}
+          ${UI.otp()}
+          <p class="reenviar" data-reenviar="45"></p>
+          ${UI.boton("Verificar", { tipo: "submit", cargando: "Verificando…" })}
           <p class="centrado">${UI.enlace("Cambiar correo", "crear-cuenta-datos")}</p>
         </form>
       </section>`;
@@ -376,8 +376,8 @@ UCA.registrar("recuperar-contrasena", {
           </div>
         </div>
         <form class="pila sep-m" data-envio="codigo-verificacion" novalidate>
-          ${UI.campo({ id: "correo", etiqueta: "Correo electrónico", tipo: "email", marcador: "00000000@uca.edu.sv", autocompletar: "username" })}
-          ${UI.boton("Enviar código", { tipo: "submit" })}
+          ${UI.campo({ id: "correo", etiqueta: "Correo electrónico", tipo: "email", marcador: "00000000@uca.edu.sv", autocompletar: "username", validar: "correo" })}
+          ${UI.boton("Enviar código", { tipo: "submit", cargando: "Enviando código…" })}
           <p class="centrado">${UI.enlace("Volver a iniciar sesión", "iniciar-sesion")}</p>
         </form>
       </section>`;
@@ -395,13 +395,13 @@ UCA.registrar("codigo-verificacion", {
           <span class="circulo">${UI.icono("escudo", 22)}</span>
           <p class="tarjeta__sobre">Código de seguridad</p>
           <p class="tarjeta__titulo">Revisa tu correo</p>
-          <p class="tarjeta__texto">Lo enviamos a 00000000@uca.edu.sv</p>
+          <p class="tarjeta__texto">Lo enviamos a ${UI.escapar(UCA.sesion.correo || "00000000@uca.edu.sv")}</p>
         </div>
         <form class="pila sep-m" data-envio="nueva-contrasena" novalidate>
           <h2 class="titulo-seccion">Código de 6 dígitos</h2>
-          ${UI.otp("715936")}
-          <p class="reenviar" data-reenviar>${UI.icono("reloj", 16)}<span>Puedes reenviar el código en <span data-cuenta="32">0:32</span></span></p>
-          ${UI.boton("Continuar", { tipo: "submit" })}
+          ${UI.otp()}
+          <p class="reenviar" data-reenviar="32"></p>
+          ${UI.boton("Continuar", { tipo: "submit", cargando: "Verificando…" })}
         </form>
       </section>`;
   }
@@ -418,7 +418,7 @@ UCA.registrar("nueva-contrasena", {
         <p class="subtitulo">Que sea fácil de recordar para ti y difícil para los demás.</p>
         <form class="pila sep-m" data-envio="contrasena-actualizada" novalidate>
           ${UI.campo({ id: "clave", etiqueta: "Nueva contraseña", tipo: "password", marcador: "••••••••••", ojo: true, autocompletar: "new-password" })}
-          ${UI.campo({ id: "clave2", etiqueta: "Confirmar contraseña", tipo: "password", marcador: "••••••••••", ojo: true, autocompletar: "new-password" })}
+          ${UI.campo({ id: "clave2", etiqueta: "Confirmar contraseña", tipo: "password", marcador: "••••••••••", ojo: true, autocompletar: "new-password", validar: "igual-clave" })}
           <div class="seguridad">
             <p class="seguridad__texto">Seguridad: <span data-nivel>—</span></p>
             <div class="seguridad__niveles">
@@ -426,7 +426,7 @@ UCA.registrar("nueva-contrasena", {
             </div>
           </div>
           ${requisitosClave("Tu contraseña tiene")}
-          ${UI.boton("Guardar contraseña", { tipo: "submit" })}
+          ${UI.boton("Guardar contraseña", { tipo: "submit", cargando: "Guardando…" })}
         </form>
       </section>`;
   },
