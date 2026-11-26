@@ -23,12 +23,12 @@
   const cuando = (item) => (esEvento(item) ? `${FECHA.mini(FECHA.leer(item.fecha))} · ${item.hora}` : `${item.dias} · ${item.hora}`);
 
   /* ---------- 16 · Notificaciones ---------- */
-  const FILTROS_AVISOS = [
-    ["todos", "Todos"],
-    ["reservas", "Reservas"],
-    ["eventos", "Eventos"],
-    ["tutorias", "Tutorías"]
-  ];
+  // Filtros de avisos: el usuario externo tiene los suyos (86)
+  const FILTROS_AVISOS = {
+    estudiante: [["todos", "Todos"], ["reservas", "Reservas"], ["eventos", "Eventos"], ["tutorias", "Tutorías"]],
+    externo: [["todos", "Todos"], ["reservas", "Reservas"], ["solicitudes", "Solicitudes"], ["pagos", "Pagos"], ["eventos", "Eventos"]]
+  };
+  const TIPO_AVISO = { reservas: "RESERVA", eventos: "EVENTO", tutorias: "TUTORÍA", solicitudes: "SOLICITUD", pagos: "PAGO" };
 
   UCA.registrar("notificaciones", {
     dibujar() {
@@ -38,7 +38,7 @@
           <div class="app-contenido">
             <h1 class="titulo">Tus avisos</h1>
             <div class="filtros" aria-label="Filtrar avisos">
-              ${FILTROS_AVISOS.filter(([valor]) => UCA.rol !== "externo" || valor !== "tutorias").map(([valor, texto], i) => `<button type="button" class="filtro${i === 0 ? " filtro--activo" : ""}" data-filtro="${valor}" aria-pressed="${i === 0}">${texto}</button>`).join("")}
+              ${(FILTROS_AVISOS[UCA.rol] || FILTROS_AVISOS.estudiante).map(([valor, texto], i) => `<button type="button" class="filtro${i === 0 ? " filtro--activo" : ""}" data-filtro="${valor}" aria-pressed="${i === 0}">${texto}</button>`).join("")}
             </div>
             <div class="avisos" data-lista></div>
           </div>
@@ -64,10 +64,11 @@
               .map(
                 (a) => `
                 <a class="aviso-item${a.leido ? "" : " aviso-item--nuevo"}" href="#/${a.ir}" data-aviso="${a.id}">
-                  <span class="aviso-item__icono">${UI.icono(a.icono, 18)}</span>
+                  <span class="aviso-item__icono aviso-item__icono--${a.icono}">${UI.icono(a.icono, 18)}</span>
                   <span class="aviso-item__cuerpo">
                     <span class="aviso-item__titulo">${a.titulo}</span>
                     <span class="aviso-item__texto">${UI.escapar(a.texto)}</span>
+                    ${TIPO_AVISO[a.categoria] ? `<span class="aviso-item__tipo">${TIPO_AVISO[a.categoria]}</span>` : ""}
                   </span>
                   <span class="aviso-item__tiempo">${a.tiempo}</span>
                   ${a.leido ? "" : '<span class="aviso-item__punto"><span class="sr-only">Sin leer</span></span>'}

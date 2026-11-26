@@ -31,23 +31,50 @@ const UCA = {
      #/detalle-cancha/voleibol, la pantalla es "detalle-cancha" y el dato "voleibol" */
   mostrar(id, dato = "") {
     const contenedor = document.getElementById("app");
-    const pantalla = this.pantallas[id] || this.pantallas["pendiente"];
+    // 89 · Si la dirección no existe, se muestra la pantalla de error
+    if (!this.pantallas[id]) {
+      id = "error";
+      dato = "404";
+    }
+    const pantalla = this.pantallas[id];
 
     UI.cerrarHoja(true); // si había una hoja abierta, se cierra al cambiar de pantalla
     if (id.startsWith("externo-")) this.rol = "externo";
     else if (id.startsWith("estudiante-")) this.rol = "estudiante";
     else if (id.startsWith("admin-")) this.rol = "admin";
-    contenedor.innerHTML = pantalla.dibujar(dato);
-    contenedor.scrollTop = 0;
-    this.actual = id;
 
-    // Da vida a los campos, el código, la cuenta regresiva...
-    UI.activar(contenedor);
-
-    // Cada pantalla puede tener su propio comportamiento (opcional)
-    if (typeof pantalla.alMostrar === "function") {
-      pantalla.alMostrar(contenedor, dato);
+    // 87 · Justo después de iniciar sesión, el inicio muestra "Cargando" un momento
+    if (this.sesion.cargarInicio === id) {
+      this.sesion.cargarInicio = null;
+      contenedor.innerHTML = this.pantallas.cargando.dibujar(id);
+      this.actual = id;
+      setTimeout(() => {
+        if (this.actual === id) this.mostrar(id, dato);
+      }, 900);
+      return;
     }
+
+    try {
+      contenedor.innerHTML = pantalla.dibujar(dato);
+      contenedor.scrollTop = 0;
+      this.actual = id;
+
+      // Da vida a los campos, el código, la cuenta regresiva...
+      UI.activar(contenedor);
+
+      // Cada pantalla puede tener su propio comportamiento (opcional)
+      if (typeof pantalla.alMostrar === "function") {
+        pantalla.alMostrar(contenedor, dato);
+      }
+    } catch (error) {
+      // 89 · Si algo falla al dibujar, se muestra el error en vez de una pantalla rota
+      console.error(error);
+      if (id !== "error") this.mostrar("error", "500");
+      return;
+    }
+
+    // 85 · Avisos que llegaron mientras la persona no estaba
+    UI.revisarPush(id);
   },
 
   /* Cambia de pantalla */
@@ -104,6 +131,9 @@ const UCA = {
         if (!/clave/.test(nombre)) this.sesion[nombre] = String(valor).trim();
       });
 
+      // Al iniciar sesión, el inicio mostrará "Cargando" (87)
+      if (/-inicio$/.test(formulario.dataset.envio)) this.sesion.cargarInicio = formulario.dataset.envio;
+
       // Simula que "procesa" un momento, como una app real
       boton.disabled = true;
       boton.classList.add("boton--cargando");
@@ -115,6 +145,11 @@ const UCA = {
     document.addEventListener("keydown", (evento) => {
       if (evento.key === "Escape") UI.cerrarHoja();
     });
+
+    // 88 · Si se pierde internet aparece "Sin conexión"; al volver, se quita sola
+    window.addEventListener("offline", () => UI.sinConexion(true));
+    window.addEventListener("online", () => UI.sinConexion(false));
+    if (!navigator.onLine) UI.sinConexion(true);
 
     window.addEventListener("hashchange", () => this.leerDireccion());
     this.leerDireccion();

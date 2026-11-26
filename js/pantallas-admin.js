@@ -50,8 +50,9 @@
   const rango = (hora, horas) => `${O.hh(O.num(hora))} – ${horaFin(hora, horas)}`;
 
   /* Avisos para el estudiante y para el usuario externo */
-  const avisarEstudiante = (aviso) => DATOS.avisos.unshift({ id: `adm-${Date.now()}`, grupo: "HOY", tiempo: "Ahora", leido: false, ...aviso });
-  const avisarExterno = (aviso) => DATOS.avisosExterno.unshift({ id: `adm-${Date.now()}`, grupo: "HOY", tiempo: "Ahora", leido: false, ...aviso });
+  // push: true → al abrir su app, la persona lo ve como aviso arriba (85)
+  const avisarEstudiante = (aviso) => DATOS.avisos.unshift({ id: `adm-${Date.now()}`, grupo: "HOY", tiempo: "Ahora", leido: false, push: true, ...aviso });
+  const avisarExterno = (aviso) => DATOS.avisosExterno.unshift({ id: `adm-${Date.now()}`, grupo: "HOY", tiempo: "Ahora", leido: false, push: true, ...aviso });
   const esDeCarlos = (s) => DATOS.solicitudes.includes(s);
 
   /* Chips de una sola opción */
@@ -223,7 +224,7 @@
     if (porCancelacion) s.canceladaPorAdmin = true;
     if (esDeCarlos(s)) {
       avisarExterno({
-        categoria: "reservas",
+        categoria: porCancelacion ? "reservas" : "solicitudes",
         icono: "alerta",
         titulo: porCancelacion ? "Administración canceló tu reserva" : "Solicitud no aprobada",
         texto: `${DATOS.canchas[s.cancha].nombre} · Reembolso de ${dinero(s.total)} en proceso.`,
@@ -696,7 +697,7 @@
             s.reserva = nuevoCodigo("R", usados);
             if (esDeCarlos(s)) {
               avisarExterno({
-                categoria: "reservas",
+                categoria: "solicitudes",
                 icono: "visto",
                 titulo: "¡Solicitud aprobada!",
                 texto: `${DATOS.canchas[s.cancha].nombre} · ${FECHA.mini(FECHA.leer(s.fecha))}. Tu código: ${s.reserva}.`,

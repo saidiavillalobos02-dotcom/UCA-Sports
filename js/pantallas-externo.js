@@ -1067,7 +1067,7 @@
       DATOS.avisosExterno.unshift({
         id: `s-${Date.now()}`,
         grupo: "HOY",
-        categoria: "reservas",
+        categoria: pago.tipo === "transferencia" ? "pagos" : "solicitudes",
         icono: "reloj",
         titulo: pago.tipo === "transferencia" ? "Comprobante recibido" : "Solicitud en revisión",
         texto: `${c.cancha.nombre} · ${FECHA.mini(FECHA.leer(s.fecha))}, ${solicitud.hora}`,
@@ -1381,7 +1381,7 @@
       DATOS.avisosExterno.unshift({
         id: `x-${Date.now()}`,
         grupo: "HOY",
-        categoria: "eventos",
+        categoria: enRevision ? "pagos" : "eventos",
         icono: enRevision ? "reloj" : "visto",
         titulo: enRevision ? "Comprobante recibido" : "Inscripción confirmada",
         texto: `${item.corto} · ${cuandoTexto(item)}`,

@@ -290,7 +290,7 @@ const DATOS = {
   /* ---------- Avisos (16) ----------
      categoria: reservas, eventos o tutorias. "ir" es la pantalla que abre. */
   avisos: [
-    { id: "a1", grupo: "HOY", categoria: "reservas", icono: "visto", titulo: "Reserva confirmada", texto: "Cancha de voleibol · Mié 18, 3:00 p. m.", tiempo: "5 min", leido: false, ir: "mis-reservas" },
+    { id: "a1", grupo: "HOY", categoria: "reservas", icono: "visto", titulo: "Reserva confirmada", texto: "Cancha de voleibol · Mié 18, 3:00 p. m.", tiempo: "5 min", leido: false, push: true, ir: "mis-reservas" },
     { id: "a2", grupo: "HOY", categoria: "tutorias", icono: "estrella", titulo: "Tu postulación avanzó", texto: "Ya eres tutora de básquetbol.", tiempo: "1 h", leido: false, ir: "mis-tutorias" },
     { id: "a3", grupo: "ESTA SEMANA", categoria: "eventos", icono: "trofeo", titulo: "Nuevo evento disponible", texto: "Copa interfacultades · hasta el 19 nov.", tiempo: "Lun", leido: true, ir: "evento/copa-interfacultades" },
     { id: "a4", grupo: "ESTA SEMANA", categoria: "reservas", icono: "reloj", titulo: "Recordatorio de reserva", texto: "Tu cancha de básquetbol es el viernes.", tiempo: "Dom", leido: true, ir: "mis-reservas" },
@@ -377,10 +377,10 @@ const DATOS = {
   inscripcionesExternas: [],
 
   avisosExterno: [
-    { id: "e1", grupo: "HOY", categoria: "reservas", icono: "reloj", titulo: "Solicitud en revisión", texto: "Cancha de fútbol · Mié 18, 3:00 p. m.", tiempo: "1 h", leido: false, ir: "detalle-solicitud/SOL-1187" },
+    { id: "e1", grupo: "HOY", categoria: "solicitudes", icono: "reloj", titulo: "Solicitud en revisión", texto: "Cancha de fútbol · Mié 18, 3:00 p. m.", tiempo: "1 h", leido: false, ir: "detalle-solicitud/SOL-1187" },
     { id: "e2", grupo: "ESTA SEMANA", categoria: "eventos", icono: "trofeo", titulo: "Nuevo evento abierto", texto: "Copa amistosa comunitaria · Dom 22 nov.", tiempo: "Lun", leido: true, ir: "evento-externo/copa-comunitaria" },
-    { id: "e3", grupo: "ANTERIORES", categoria: "reservas", icono: "visto", titulo: "Solicitud aprobada", texto: "Cancha de voleibol · Sáb 7 nov, 9:00 a. m.", tiempo: "5 nov", leido: true, ir: "solicitud-aprobada/SOL-1102" },
-    { id: "e4", grupo: "ANTERIORES", categoria: "reservas", icono: "alerta", titulo: "Solicitud no aprobada", texto: "Reembolso de $15.00 acreditado.", tiempo: "2 nov", leido: true, ir: "solicitud-rechazada/SOL-1150" }
+    { id: "e3", grupo: "ANTERIORES", categoria: "solicitudes", icono: "visto", titulo: "Solicitud aprobada", texto: "Cancha de voleibol · Sáb 7 nov, 9:00 a. m.", tiempo: "5 nov", leido: true, ir: "solicitud-aprobada/SOL-1102" },
+    { id: "e4", grupo: "ANTERIORES", categoria: "pagos", icono: "alerta", titulo: "Solicitud no aprobada", texto: "Reembolso de $15.00 acreditado.", tiempo: "2 nov", leido: true, ir: "solicitud-rechazada/SOL-1150" }
   ],
 
   /* ==========================================================

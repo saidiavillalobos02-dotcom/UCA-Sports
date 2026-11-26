@@ -52,6 +52,12 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
   - Ocupación de espacios por día y por semana, y bloqueo de horarios (71 a 74).
   - Actividades y eventos: crear, editar, ver inscritos y exportarlos a Excel (75 a 79).
   - Tutorías: aprobar o rechazar postulaciones y registrar horas sociales (80 a 83).
+- Estados de toda la app (85 a 89):
+  - Aviso push: cuando administración responde algo, la persona lo ve arriba al abrir su app; al tocarlo va al detalle.
+  - Centro de avisos con el tipo de cada aviso y filtros propios para el usuario externo (Reservas, Solicitudes, Pagos y Eventos).
+  - Cargando: se ve un momento al entrar al inicio después de iniciar sesión.
+  - Sin conexión: aparece sola si el teléfono pierde internet, encima de lo que se estaba haciendo, y se quita sola al volver.
+  - Error: aparece si se abre una dirección que no existe (404) o si algo falla (500). Para verlas en la presentación: `#/error/500` y `#/sin-conexion`.
 
 ## Cómo se comporta (como una app de verdad)
 
