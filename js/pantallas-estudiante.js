@@ -158,7 +158,7 @@ UCA.registrar("estudiante-reservas", {
           </a>
 
           <a class="cancha cancha--compacta" data-ir="evento/taekwondo" data-categoria="clases">
-            <div class="cancha__foto"><img src="img/Fotografia%20taekwondo.jpg" alt="Clase de taekwondo"></div>
+            <div class="cancha__foto"><img src="img/Fotografia%20taekwondo%202.jpg" alt="Clase de taekwondo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Taekwondo</p>
               <p class="cancha__meta">Clases con instructor</p>
@@ -170,7 +170,7 @@ UCA.registrar("estudiante-reservas", {
           </a>
 
           <a class="cancha cancha--compacta" data-ir="evento/gimnasio" data-categoria="clases">
-            <div class="cancha__foto"><img src="img/Fotografia.jpg" alt="Gimnasio del polideportivo"></div>
+            <div class="cancha__foto"><img src="img/Fotografia%20gimnasio%20pesas.jpg" alt="Gimnasio del polideportivo"></div>
             <div class="cancha__cuerpo">
               <p class="cancha__titulo">Gimnasio</p>
               <p class="cancha__meta">Entrenamiento con instructor</p>
