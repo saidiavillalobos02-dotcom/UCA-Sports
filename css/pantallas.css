@@ -2943,3 +2943,794 @@
 .destacada--morada {
   background: var(--morado);
 }
+
+/* ==========================================================
+   ADMINISTRACIÓN (60 a 83)
+   ========================================================== */
+.admin-cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-salir {
+  flex: none;
+  margin-top: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radio-chico);
+  background: var(--grafito);
+  color: var(--lima);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.admin-fecha {
+  margin-top: -12px;
+}
+
+.admin-dia {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+.lista-tarjetas > .admin-dia {
+  margin-top: 8px;
+}
+
+.admin-conteo {
+  margin-top: -8px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.admin-nota {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.admin-nota .icono {
+  flex: none;
+}
+
+.etiqueta--morada {
+  background: var(--morado);
+  color: var(--gris-claro);
+}
+
+.leyenda__muestra--pendiente {
+  border-color: #a98fe3;
+  background: #a98fe3;
+}
+
+/* 60 · Barras de ocupación */
+.barras-ocupacion {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.barra-ocupacion {
+  display: grid;
+  grid-template-columns: 84px 1fr 38px;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--texto-pequeno);
+}
+
+.barra-ocupacion__nombre {
+  font-weight: 600;
+}
+
+.barra-ocupacion__pista {
+  height: 8px;
+  border-radius: var(--radio-total);
+  background: var(--gris-claro);
+  overflow: hidden;
+}
+
+.barra-ocupacion__pista span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-total);
+  background: var(--morado);
+}
+
+.barra-ocupacion__valor {
+  text-align: right;
+  color: var(--gris-oscuro);
+}
+
+/* 60 y 66 · Tarjeta de solicitud */
+.solicitud-admin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 44px 14px 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.solicitud-admin__arriba {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% + 30px);
+}
+
+.solicitud-admin__pago {
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.solicitud-admin__nombre {
+  margin-top: 8px;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.solicitud-admin__texto {
+  font-size: var(--texto-pequeno);
+}
+
+.solicitud-admin__cita {
+  margin-top: 6px;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-medio);
+}
+
+.solicitud-admin > .icono {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+}
+
+/* 61 · Reservas */
+.admin-filtros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-filtros__boton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.admin-filtros__boton .icono {
+  color: var(--lima);
+}
+
+.admin-filtros__punto {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--gris-claro);
+  border-radius: var(--radio-total);
+  background: var(--lima);
+}
+
+.reserva-fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px 10px 10px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.reserva-fila__hora {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: var(--grafito);
+  color: var(--gris-claro);
+  font-size: var(--texto-pequeno);
+}
+
+.reserva-fila__hora strong {
+  font-weight: 600;
+}
+
+.reserva-fila__hora small {
+  font-size: var(--texto-mini);
+  color: var(--lima);
+}
+
+.reserva-fila--apagada .reserva-fila__hora {
+  background: var(--gris-medio);
+  color: var(--grafito);
+}
+
+.reserva-fila--apagada .reserva-fila__hora small {
+  color: var(--grafito);
+}
+
+.reserva-fila__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.reserva-fila__titulo {
+  display: block;
+  font-weight: 600;
+}
+
+.reserva-fila__texto {
+  display: block;
+  overflow: hidden;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 63 y 67 · Tarjeta del usuario */
+.usuario-tarjeta,
+.inscrito,
+.postulante {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.usuario-tarjeta__cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.usuario-tarjeta__nombre {
+  display: block;
+  font-weight: 600;
+}
+
+.usuario-tarjeta__texto {
+  display: block;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+.inicial {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radio-total);
+  background: var(--lima);
+  color: var(--grafito);
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.inicial--oscura {
+  background: var(--grafito);
+  color: var(--lima);
+}
+
+.inicial--grande {
+  width: 56px;
+  height: 56px;
+  font-size: var(--texto-h4);
+}
+
+/* 67 · Pago y horario */
+.dos-cajas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.dos-cajas__caja {
+  position: relative;
+  min-width: 0;
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.dos-cajas__caja--lima {
+  background: var(--lima);
+  color: var(--grafito);
+}
+
+.dos-cajas__caja--roja {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.dos-cajas__caja--gris {
+  background: var(--gris-medio);
+  color: var(--grafito);
+}
+
+.dos-cajas__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+}
+
+.dos-cajas__caja:not(.dos-cajas__caja--lima):not(.dos-cajas__caja--roja):not(.dos-cajas__caja--gris) .dos-cajas__sobre {
+  color: var(--lima);
+}
+
+.dos-cajas__valor {
+  margin-top: 4px;
+  font-size: var(--texto-h3);
+  font-weight: 600;
+}
+
+.dos-cajas__valor--chico {
+  font-size: var(--texto-h5);
+}
+
+.dos-cajas__texto {
+  margin-top: 2px;
+  font-size: var(--texto-mini);
+  overflow-wrap: anywhere;
+}
+
+.dos-cajas__icono {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radio-total);
+  background: var(--grafito);
+  color: var(--lima);
+}
+
+/* 71 y 72 · Franjas de ocupación */
+.ocupacion-tarjeta {
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.ocupacion-tarjeta__arriba,
+.ocupacion-tarjeta__abajo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ocupacion-tarjeta__nombre {
+  font-weight: 600;
+}
+
+.ocupacion-tarjeta__abajo {
+  margin-top: 8px;
+  font-size: var(--texto-mini);
+}
+
+.ocupacion-tarjeta__enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.franjas {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 3px;
+  margin-top: 12px;
+}
+
+.franja {
+  height: 24px;
+  border-radius: 3px;
+  background: var(--blanco);
+}
+
+.ocupacion-tarjeta .franja--libre {
+  background: #4a4a4f;
+}
+
+.franja--ocupado {
+  background: var(--morado);
+}
+
+.franja--pendiente {
+  background: #a98fe3;
+}
+
+.franja--bloqueado {
+  background: var(--gris-medio);
+}
+
+.semana-grilla {
+  display: grid;
+  grid-template-columns: 40px repeat(7, 1fr);
+  gap: 3px;
+}
+
+.semana-grilla__dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+.semana-grilla__dia small {
+  font-size: var(--texto-mini);
+  font-weight: 400;
+  color: var(--gris-oscuro);
+}
+
+.semana-grilla__dia--hoy {
+  color: var(--morado);
+}
+
+.semana-grilla__hora {
+  align-self: center;
+  font-size: var(--texto-mini);
+  color: var(--gris-oscuro);
+}
+
+.semana-grilla .franja {
+  height: 20px;
+  border: 1px solid var(--gris-medio);
+}
+
+.semana-grilla .franja--ocupado,
+.semana-grilla .franja--pendiente,
+.semana-grilla .franja--bloqueado {
+  border-color: transparent;
+}
+
+.horas-admin {
+  display: grid;
+  gap: 6px;
+}
+
+.hora-admin {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-left: 4px solid var(--gris-medio);
+  border-radius: 8px;
+  background: var(--blanco);
+  text-align: left;
+}
+
+.hora-admin--ocupado {
+  border-left-color: var(--morado);
+}
+
+.hora-admin--pendiente {
+  border-left-color: #a98fe3;
+}
+
+.hora-admin--bloqueado {
+  background: var(--gris-medio);
+}
+
+.hora-admin__hora {
+  flex: none;
+  width: 44px;
+  font-weight: 600;
+}
+
+.hora-admin__texto {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--texto-pequeno);
+}
+
+.hora-admin__accion {
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--morado);
+}
+
+.resumen-semana {
+  padding: 16px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.resumen-semana__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.resumen-semana__fila {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+  font-size: var(--texto-pequeno);
+}
+
+.resumen-semana__fila strong {
+  display: block;
+  font-size: var(--texto-h3);
+  font-weight: 600;
+}
+
+/* 73 · Bloquear */
+.hoja__ayuda {
+  font-weight: 400;
+  text-transform: none;
+}
+
+.chips--desliza {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chips--desliza .chip {
+  flex: none;
+}
+
+.horas--admin {
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 0;
+}
+
+.aviso-amarillo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: var(--radio);
+  background: #ffdb43;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+}
+
+/* 75 y 78 · Eventos */
+.admin-crear {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: var(--radio);
+  background: var(--morado);
+  color: var(--gris-claro);
+  font-weight: 600;
+}
+
+.evento-admin {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.evento-admin__arriba,
+.evento-admin__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.evento-admin__sobre {
+  font-size: var(--texto-mini);
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.evento-admin__titulo {
+  margin: 4px 0 10px;
+  font-size: var(--texto-h4);
+  font-weight: 600;
+}
+
+.evento-admin__fila {
+  font-size: var(--texto-pequeno);
+}
+
+.evento-admin__porcentaje {
+  font-weight: 600;
+  color: var(--lima);
+}
+
+.evento-admin__barra {
+  height: 8px;
+  margin-top: 8px;
+  border-radius: var(--radio-total);
+  background: #4a4a4f;
+  overflow: hidden;
+}
+
+.evento-admin__barra span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-total);
+  background: var(--lima);
+}
+
+.resumen--morado {
+  margin-top: 24px;
+  background: var(--morado);
+}
+
+/* 76 · Crear evento */
+.costo-elegir {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.pestanas--chicas .pestana {
+  height: 40px;
+}
+
+.costo-elegir__precio {
+  gap: 4px;
+}
+
+.costo-elegir__precio .campo__entrada {
+  min-width: 0;
+}
+
+.costo-elegir__por {
+  flex: none;
+  font-size: var(--texto-pequeno);
+  color: var(--gris-oscuro);
+}
+
+/* 79 · Inscritos */
+.buscador {
+  gap: 8px;
+}
+
+.inscritos {
+  display: grid;
+  gap: 8px;
+}
+
+/* 80 a 82 · Tutorías */
+.postulante {
+  background: var(--grafito);
+  color: var(--gris-claro);
+}
+
+.postulante .usuario-tarjeta__texto {
+  color: var(--gris-medio);
+}
+
+.postulante__disciplina {
+  display: block;
+  font-size: var(--texto-pequeno);
+  color: var(--lima);
+}
+
+.postulante > .icono {
+  flex: none;
+  color: var(--lima);
+}
+
+.postulante--grande {
+  padding: 16px;
+}
+
+.tutor-tarjeta {
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.tutor-tarjeta__arriba {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tutor-tarjeta__barra {
+  height: 8px;
+  margin: 12px 0 0 52px;
+  border-radius: var(--radio-total);
+  background: var(--gris-claro);
+  overflow: hidden;
+}
+
+.tutor-tarjeta__barra span {
+  display: block;
+  height: 100%;
+  border-radius: var(--radio-total);
+  background: var(--morado);
+}
+
+.tutor-tarjeta__accion,
+.tutor-tarjeta__listo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 10px 0 0 52px;
+  font-size: var(--texto-pequeno);
+  font-weight: 600;
+  color: var(--morado);
+}
+
+.requisitos-caja {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: var(--radio);
+  background: var(--blanco);
+}
+
+.requisitos-caja__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--texto-pequeno);
+}
+
+.requisitos-caja__item .icono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radio-total);
+  background: var(--morado);
+  color: var(--blanco);
+}
+
+.tutor-resumen {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tutor-resumen__horas {
+  flex: none;
+  font-size: var(--texto-pequeno);
+}
+
+.admin-cabecera > .etiqueta {
+  flex: none;
+  margin-top: 8px;
+  white-space: nowrap;
+}

@@ -183,6 +183,14 @@ const UI = {
     { id: "externo-perfil", icono: "usuario", texto: "Perfil" }
   ],
 
+  /* Los 4 botones de la navegación inferior de administración */
+  NAV_ADMIN: [
+    { id: "admin-inicio", icono: "inicio", texto: "Panel" },
+    { id: "admin-reservas", icono: "calendario", texto: "Reservas" },
+    { id: "admin-eventos", icono: "trofeo", texto: "Eventos" },
+    { id: "admin-tutorias", icono: "usuario", texto: "Tutorías" }
+  ],
+
   /* Barra fija de abajo. "activo" es el id de la pantalla actual */
   navInferior(activo, items = this.NAV_ESTUDIANTE) {
     const botones = items

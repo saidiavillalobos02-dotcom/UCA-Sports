@@ -36,6 +36,7 @@ const UCA = {
     UI.cerrarHoja(true); // si había una hoja abierta, se cierra al cambiar de pantalla
     if (id.startsWith("externo-")) this.rol = "externo";
     else if (id.startsWith("estudiante-")) this.rol = "estudiante";
+    else if (id.startsWith("admin-")) this.rol = "admin";
     contenedor.innerHTML = pantalla.dibujar(dato);
     contenedor.scrollTop = 0;
     this.actual = id;

@@ -135,11 +135,11 @@
     const cancha = DATOS.canchas[id];
     const clave = FECHA.clave(fecha);
     if (!sePuedeReservar(fecha) || DATOS.diasCerrados.includes(fecha.getDay()) || DATOS.mantenimiento.includes(clave)) return [];
-    const deOtraPersona = cancha.horas[(fecha.getDate() + 4) % cancha.horas.length];
+    // Otras personas, otras solicitudes y bloqueos de administración: ver ocupacion.js
     return cancha.horas.map((hora) => {
       const estudiante = UCA.reservas.some((r) => r.cancha === id && r.fecha === clave && r.hora === hora && r.estado === "confirmada");
       const tuya = DATOS.solicitudes.some((s) => s.cancha === id && s.fecha === clave && s.estado !== "rechazada" && horasDeSolicitud(s).includes(hora));
-      return { hora, ocupado: estudiante || tuya || hora === deOtraPersona, tuya };
+      return { hora, ocupado: estudiante || tuya || OCUPACION.ocupadaPorOtros(id, fecha, hora), tuya };
     });
   }
 

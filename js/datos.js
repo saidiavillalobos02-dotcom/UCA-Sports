@@ -383,6 +383,76 @@ const DATOS = {
     { id: "e4", grupo: "ANTERIORES", categoria: "reservas", icono: "alerta", titulo: "Solicitud no aprobada", texto: "Reembolso de $15.00 acreditado.", tiempo: "2 nov", leido: true, ir: "solicitud-rechazada/SOL-1150" }
   ],
 
+  /* ==========================================================
+     ADMINISTRACIÓN (pantallas 60 a 83) · todo es de ejemplo
+     ========================================================== */
+  administrador: { nombre: "Administración Polideportivo", correo: "polideportivo@uca.edu.sv" },
+
+  // Solicitudes de otros usuarios externos (las de Carlos están en "solicitudes")
+  solicitudesOtras: [
+    {
+      codigo: "SOL-1192", cancha: "basquetbol", fecha: "2026-11-19", hora: "14:00", fin: "16:00", horas: 2, personas: 16,
+      nombre: "Liga Juvenil Santa Tecla", dui: "04512398-7", organizacion: "Liga Juvenil Santa Tecla",
+      telefono: "7745-1290", correo: "ligajuvenil.st@gmail.com",
+      tipo: "Torneo", descripcion: "Torneo de cierre de temporada de nuestra liga juvenil, con 16 jugadores.",
+      extra: false, total: 30, pago: { tipo: "tarjeta", texto: "Mastercard •••• 8812", fecha: "2026-11-17" },
+      enviada: "2026-11-17", estado: "revision"
+    },
+    {
+      codigo: "SOL-1195", cancha: "voleibol", fecha: "2026-11-20", hora: "16:00", fin: "17:00", horas: 1, personas: 12,
+      nombre: "María José Pérez", dui: "03344556-1", organizacion: "Textiles El Rosal",
+      telefono: "7012-3344", correo: "mariajose.perez@gmail.com",
+      tipo: "Evento comunitario", descripcion: "Actividad recreativa para empleados de nuestra empresa.",
+      extra: false, total: 15, pago: { tipo: "transferencia", texto: "Transferencia", fecha: "2026-11-18" },
+      enviada: "2026-11-18", estado: "revision"
+    }
+  ],
+
+  // Horarios bloqueados por administración. horas = cuántas horas seguidas
+  bloqueos: [
+    { codigo: "B-101", cancha: "basquetbol", fecha: "2026-11-18", hora: "06:00", horas: 2, motivo: "Mantenimiento", afectadas: 0 }
+  ],
+  reservasCanceladas: {}, // reservas de ejemplo que administración canceló
+  motivosCancelarAdmin: ["Mantenimiento", "Evento institucional", "Clima", "Otro"],
+  motivosRechazo: ["Evento institucional", "Horario ocupado", "Motivo no válido", "Otro"],
+  motivosRechazoTutor: ["Cupos llenos", "No cumple requisitos", "Otro"],
+
+  // Eventos creados desde administración (76). Incluye uno ya finalizado
+  eventosCreados: [
+    {
+      id: "liga-relampago", deporte: "Fútbol", titulo: "Liga relámpago de fútbol", fecha: "2026-11-08", hora: "9:00 a. m.",
+      cupo: { inscritos: 40, total: 40 }, costo: 0, abierto: ["estudiantes", "externos"], foto: "Fotografia futbol.jpg"
+    }
+  ],
+
+  // Postulaciones de otros estudiantes (las de Andrea están en "misTutorias")
+  postulacionesAdmin: [
+    {
+      id: "P-21", nombre: "Diego Flores", carrera: "Ingeniería Informática", carnet: "00012345", tutoria: "basquetbol",
+      experiencia: "Jugué 4 años en la selección de mi colegio y apoyo los entrenos del equipo de la selección.",
+      dias: ["Lun", "Mié"], fecha: "2026-11-16", estado: "revision"
+    },
+    {
+      id: "P-22", nombre: "Laura Ramos", carrera: "Psicología", carnet: "00023456", tutoria: "voleibol",
+      experiencia: "Fui capitana del equipo de voleibol de mi bachillerato y he dado clases a niños en mi comunidad.",
+      dias: ["Mar", "Jue"], fecha: "2026-11-17", estado: "revision"
+    },
+    {
+      id: "P-23", nombre: "Mario Pineda", carrera: "Administración de Empresas", carnet: "00034567", tutoria: "futbol",
+      experiencia: "Juego fútbol desde los 8 años y entreno a un equipo infantil los fines de semana.",
+      dias: ["Vie"], fecha: "2026-11-18", estado: "revision"
+    }
+  ],
+
+  // Tutores activos (además de Andrea, que viene de "misTutorias")
+  tutoresAdmin: [
+    { id: "T-02", nombre: "José Campos", carrera: "Ingeniería Civil", carnet: "00045678", tutoria: "futbol", horas: 30, estudiantes: 14 },
+    { id: "T-03", nombre: "Valeria Gómez", carrera: "Comunicaciones", carnet: "00056789", tutoria: "voleibol", horas: 18, estudiantes: 10 },
+    { id: "T-04", nombre: "Paola Méndez", carrera: "Arquitectura", carnet: "00067890", tutoria: "basquetbol", horas: 24, estudiantes: 9 },
+    { id: "T-05", nombre: "Kevin Rivas", carrera: "Economía", carnet: "00078901", tutoria: "futbol", horas: 8, estudiantes: 16 }
+  ],
+  registrosHoras: [],
+
   // Noticia (17)
   noticia: {
     etiqueta: "NUEVAS ACTIVIDADES",

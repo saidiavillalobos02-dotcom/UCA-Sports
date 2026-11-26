@@ -46,10 +46,10 @@
   function horariosDe(id, fecha) {
     const cancha = DATOS.canchas[id];
     if (!sePuedeReservar(fecha) || DATOS.diasCerrados.includes(fecha.getDay()) || DATOS.mantenimiento.includes(clave(fecha))) return [];
-    const deOtraPersona = cancha.horas[(fecha.getDate() + 4) % cancha.horas.length];
+    // Otras personas, solicitudes externas y bloqueos de administración: ver ocupacion.js
     return cancha.horas.map((hora) => {
       const tuya = UCA.reservas.some((r) => r.cancha === id && r.fecha === clave(fecha) && r.hora === hora && r.estado === "confirmada");
-      return { hora, ocupado: tuya || hora === deOtraPersona, tuya };
+      return { hora, ocupado: tuya || OCUPACION.ocupadaPorOtros(id, fecha, hora), tuya };
     });
   }
 

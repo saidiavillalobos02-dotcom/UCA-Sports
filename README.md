@@ -45,7 +45,13 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
   - Respuesta de administración: solicitud aprobada y no aprobada con reembolso (49 y 50).
   - Eventos y clases con costo para la comunidad, pago e inscripción confirmada (51 a 55, taekwondo y gimnasio).
   - Perfil, editar perfil y foto, mis solicitudes, detalle de solicitud y pagos y comprobantes (56 a 59).
-- Falta: el panel de administración.
+- Panel de administración (completo):
+  - Panel de control con reservas de hoy, solicitudes pendientes y ocupación (60).
+  - Reservas con filtros, detalle, cancelar con motivo y aviso al usuario (61 a 65).
+  - Solicitudes externas: aprobar (genera el código de reserva) o rechazar con reembolso (66 a 70).
+  - Ocupación de espacios por día y por semana, y bloqueo de horarios (71 a 74).
+  - Actividades y eventos: crear, editar, ver inscritos y exportarlos a Excel (75 a 79).
+  - Tutorías: aprobar o rechazar postulaciones y registrar horas sociales (80 a 83).
 
 ## Cómo se comporta (como una app de verdad)
 
@@ -62,6 +68,7 @@ img/                    Fotos y logo (las 28 fotos están pendientes)
 - **Perfil editable**: puedes cambiar tu nombre para mostrar (2 a 24 letras) y tu foto (JPG o PNG de hasta 5 MB). "Guardar cambios" solo se enciende si cambiaste algo.
 - **Cancelar una reserva** libera ese horario para otros, y "Agregar a mi calendario" descarga un archivo que abre el calendario del teléfono o la computadora.
 - **Usuario externo**: elige hasta 2 horas seguidas, el costo se calcula solo ($15.00 por hora en canchas y $8.00 en ping pong, más vestidores o paletas si los quiere), y puede pagar con su tarjeta guardada, con otra tarjeta o por transferencia. Sus solicitudes, pagos y avisos se guardan aparte de los del estudiante.
+- **Todo está conectado entre las tres apps**: lo que hace administración (aprobar, rechazar, cancelar, bloquear horarios, crear eventos o registrar horas) lo ven al instante el estudiante y el usuario externo, con su aviso en notificaciones. El cálculo de qué horas están ocupadas está en un solo archivo: `js/ocupacion.js`.
 - Esta lógica está en `js/componentes.js` (`UI.REGLAS` y `UI.activarFormularios`) y `js/app.js`.
 
 ## Íconos
