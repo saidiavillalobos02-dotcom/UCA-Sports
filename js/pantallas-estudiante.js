@@ -265,6 +265,7 @@ UCA.registrar("estudiante-actividades", {
 
           <div>
             <a class="tarjeta-entrenamiento" data-ir="evento/clinica-futbol">
+              <div class="tarjeta-entrenamiento__foto"><img src="img/Fotografia%20futbol.jpg" alt="Clínica de fútbol en la cancha"></div>
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Clínica de fútbol</p>
                 <p class="tarjeta-entrenamiento__meta">Curso · 4 semanas · $5.00</p>
@@ -273,6 +274,7 @@ UCA.registrar("estudiante-actividades", {
               </div>
             </a>
             <a class="tarjeta-entrenamiento sep-s" data-ir="evento/taekwondo">
+              <div class="tarjeta-entrenamiento__foto"><img src="img/Fotografia%20taekwondo.jpg" alt="Clase de taekwondo"></div>
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Taekwondo</p>
                 <p class="tarjeta-entrenamiento__meta">Clases · Todos los niveles</p>
@@ -281,6 +283,7 @@ UCA.registrar("estudiante-actividades", {
               </div>
             </a>
             <a class="tarjeta-entrenamiento sep-s" data-ir="evento/gimnasio">
+              <div class="tarjeta-entrenamiento__foto"><img src="img/Fotografia%20gimnasio.jpg" alt="Entrenamiento en el gimnasio"></div>
               <div class="tarjeta-entrenamiento__cuerpo">
                 <p class="tarjeta-entrenamiento__titulo">Gimnasio</p>
                 <p class="tarjeta-entrenamiento__meta">Entrenamiento · Todos los niveles</p>
