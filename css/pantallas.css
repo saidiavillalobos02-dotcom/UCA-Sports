@@ -1017,6 +1017,7 @@
 }
 
 .tutoria-mini {
+  display: block;
   margin-top: 14px;
   padding: 14px;
   border-radius: var(--radio);
@@ -4016,4 +4017,10 @@
 
 .estado-pantalla__centro .etiqueta {
   align-self: center;
+}
+
+/* Tarjetas de disciplina exportadas de Figma: ya traen el nombre y la sombra */
+.disciplinas--figma .disciplina::after,
+.disciplina--figma::after {
+  display: none;
 }

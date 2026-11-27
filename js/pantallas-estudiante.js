@@ -31,18 +31,18 @@ UCA.registrar("estudiante-inicio", {
               <p class="titulo-seccion">Reserva tu espacio</p>
               ${UI.enlace("Ver todos", "estudiante-reservas")}
             </div>
-            <div class="disciplinas">
+            <div class="disciplinas disciplinas--figma">
               <a class="disciplina" data-ir="detalle-cancha/futbol">
-                <img src="img/Cancha%20de%20futbol.jpg" alt="Cancha de fútbol">
-                <span class="disciplina__nombre">Fútbol</span>
+                <img src="img/Tarjeta%20futbol.jpg" alt="">
+                <span class="sr-only">Fútbol</span>
               </a>
               <a class="disciplina" data-ir="detalle-cancha/voleibol">
-                <img src="img/Cancha%20de%20voleibol.jpg" alt="Cancha de voleibol">
-                <span class="disciplina__nombre">Voleibol</span>
+                <img src="img/Tarjeta%20voleibol.jpg" alt="">
+                <span class="sr-only">Voleibol</span>
               </a>
               <a class="disciplina" data-ir="detalle-cancha/basquetbol">
-                <img src="img/Cancha%20de%20basquetbol.jpg" alt="Cancha de básquetbol">
-                <span class="disciplina__nombre">Básquetbol</span>
+                <img src="img/Tarjeta%20basquetbol.jpg" alt="">
+                <span class="sr-only">Básquetbol</span>
               </a>
             </div>
           </div>

@@ -39,9 +39,12 @@ const UCA = {
     const pantalla = this.pantallas[id];
 
     UI.cerrarHoja(true); // si había una hoja abierta, se cierra al cambiar de pantalla
+    const rolAnterior = this.rol;
     if (id.startsWith("externo-")) this.rol = "externo";
     else if (id.startsWith("estudiante-")) this.rol = "estudiante";
     else if (id.startsWith("admin-")) this.rol = "admin";
+    // El aviso de arriba (85) es de una sola app: si se cambia de app, se quita
+    if (this.rol !== rolAnterior || ["bienvenida", "splash"].includes(id)) UI.quitarPush();
 
     // 87 · Justo después de iniciar sesión, el inicio muestra "Cargando" un momento
     if (this.sesion.cargarInicio === id) {

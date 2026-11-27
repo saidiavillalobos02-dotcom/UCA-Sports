@@ -21,6 +21,8 @@
   const E = DATOS.externo;
   const NAV = UI.NAV_EXTERNO;
   // Fotos de las tarjetas pequeñas (las mismas que usa el estudiante en sus listas)
+  // Tarjetas del inicio exportadas de Figma (ya traen el nombre escrito)
+  const TARJETA = { futbol: "Tarjeta futbol.jpg", voleibol: "Tarjeta voleibol.jpg", basquetbol: "Tarjeta basquetbol.jpg" };
   const FOTO_LISTA = {
     basquetbol: "Cancha de basquetbol.jpg",
     voleibol: "Cancha de voleibol.jpg",
@@ -409,9 +411,9 @@
                   .map((id) => {
                     const c = DATOS.canchas[id];
                     return `
-                  <a class="disciplina" href="#/solicitud-horario/${id}" data-ir="solicitud-horario/${id}">
-                    <img src="img/${encodeURI(FOTO_LISTA[id])}" alt="${c.nombre}">
-                    <span class="disciplina__nombre">${c.corto}</span>
+                  <a class="disciplina${TARJETA[id] ? " disciplina--figma" : ""}" href="#/solicitud-horario/${id}" data-ir="solicitud-horario/${id}">
+                    <img src="img/${encodeURI(TARJETA[id] || FOTO_LISTA[id])}" alt="">
+                    <span class="${TARJETA[id] ? "sr-only" : "disciplina__nombre"}">${c.corto}</span>
                   </a>`;
                   })
                   .join("")}
