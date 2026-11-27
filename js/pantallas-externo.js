@@ -383,7 +383,7 @@
         .sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
       // La solicitud más reciente que sigue pendiente o por usarse
       const activa = DATOS.solicitudes.find((s) => !yaPaso(s) && s.estado !== "rechazada");
-      const espacios = ["futbol", "voleibol", "basquetbol", "ping-pong"];
+      const espacios = ["futbol", "voleibol", "basquetbol"];
 
       return `
         <section class="pantalla pantalla--app">
@@ -406,7 +406,7 @@
                 <p class="titulo-seccion">Espacios disponibles</p>
                 ${UI.enlace("Ver todos", "externo-reservas")}
               </div>
-              <div class="disciplinas disciplinas--desliza">
+              <div class="disciplinas">
                 ${espacios
                   .map((id) => {
                     const c = DATOS.canchas[id];
